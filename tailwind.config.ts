@@ -24,6 +24,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				fintaxy: {
+					bg: '#F9FAFB',
+					purple: '#9b87f5',
+					darkPurple: '#1A1F2C',
+					gray: '#8E9196'
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
