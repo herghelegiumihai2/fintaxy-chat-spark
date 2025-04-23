@@ -1,8 +1,15 @@
 
 import React, { useState } from "react";
-import { Mic, Paperclip, Eye, EyeOff, Send, FileText, FilePlus, FileSearch, Zap, Search, User, Folder, Plus, List } from "lucide-react";
+import { Mic, Paperclip, ChevronDown, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface WorkspaceItem {
   id: string;
@@ -15,13 +22,13 @@ interface ChatInputProps {
 }
 
 const quickActions = [
-  { id: "anaf", label: "ANAF", icon: <FileText className="h-4 w-4 mr-2" /> },
-  { id: "invoice", label: "Create Invoice", icon: <FilePlus className="h-4 w-4 mr-2" /> },
-  { id: "process", label: "Process Documents", icon: <FileSearch className="h-4 w-4 mr-2" /> },
-  { id: "generate", label: "Generate", icon: <Zap className="h-4 w-4 mr-2" /> },
-  { id: "analyze", label: "Analyze", icon: <Search className="h-4 w-4 mr-2" /> },
-  { id: "human", label: "Human Accountant", icon: <User className="h-4 w-4 mr-2" /> },
-  { id: "workspace", label: "Workspace", icon: <Folder className="h-4 w-4 mr-2" /> },
+  { id: "anaf", label: "ANAF" },
+  { id: "invoice", label: "Create Invoice" },
+  { id: "process", label: "Process Documents" },
+  { id: "generate", label: "Generate" },
+  { id: "analyze", label: "Analyze" },
+  { id: "human", label: "Human Accountant" },
+  { id: "workspace", label: "Workspace" },
 ];
 
 const workspaces: WorkspaceItem[] = [
@@ -41,30 +48,34 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <div className="relative w-full bg-white rounded-lg shadow-sm border border-gray-200">
+    <div className="relative w-full bg-white rounded-xl shadow-sm border border-gray-200">
       <div className="p-4">
         <div className="flex items-start">
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" className="rounded-full h-8 w-8">
-              <Mic className="h-5 w-5 text-fintaxy-gray" />
-            </Button>
-            <Button variant="ghost" size="icon" className="rounded-full h-8 w-8">
-              <Paperclip className="h-5 w-5 text-fintaxy-gray" />
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="rounded-full h-8 w-8"
-              onClick={() => setActionsVisible(!actionsVisible)}
+          <div className="flex items-center space-x-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-xl h-10 w-10 bg-gray-50 hover:bg-gray-100"
             >
-              {actionsVisible ? 
-                <EyeOff className="h-5 w-5 text-fintaxy-gray" /> : 
-                <Eye className="h-5 w-5 text-fintaxy-gray" />
-              }
+              <ChevronDown className="h-5 w-5 text-gray-600" onClick={() => setActionsVisible(!actionsVisible)} />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-xl h-10 w-10 bg-gray-50 hover:bg-gray-100"
+            >
+              <Mic className="h-5 w-5 text-gray-600" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-xl h-10 w-10 bg-gray-50 hover:bg-gray-100"
+            >
+              <Paperclip className="h-5 w-5 text-gray-600" />
             </Button>
           </div>
           
-          <div className="flex-1 mx-2">
+          <div className="flex-1 mx-4">
             <textarea
               className="w-full h-10 py-2 px-1 resize-none border-0 focus:ring-0 focus:outline-none text-base"
               placeholder="What do you want to know?"
@@ -79,20 +90,20 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
             />
           </div>
           
-          <div className="flex items-center gap-2">
-            <div className="relative inline-block text-left">
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-sm font-medium flex items-center gap-1"
-              >
-                <span>{selectedModel}</span>
-                <span className="ml-1">▼</span>
-              </Button>
-            </div>
+          <div className="flex items-center gap-3">
+            <Select value={selectedModel} onValueChange={setSelectedModel}>
+              <SelectTrigger className="w-[120px] h-10 bg-gray-50">
+                <SelectValue>{selectedModel}</SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Grok 3">Grok 3</SelectItem>
+                <SelectItem value="Grok 2">Grok 2</SelectItem>
+                <SelectItem value="Grok 1">Grok 1</SelectItem>
+              </SelectContent>
+            </Select>
             <Button 
               onClick={handleSendMessage} 
-              className="rounded-full bg-fintaxy-purple hover:bg-fintaxy-purple/90"
+              className="rounded-xl bg-fintaxy-purple hover:bg-fintaxy-purple/90 h-10 w-10 p-0"
               size="icon"
             >
               <Send className="h-4 w-4" />
@@ -110,9 +121,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
                   key={action.id}
                   variant="outline"
                   size="sm"
-                  className="flex items-center gap-1 text-sm"
+                  className="rounded-xl bg-gray-50 hover:bg-gray-100 border-gray-200"
                 >
-                  {action.icon}
                   {action.label}
                 </Button>
               ) : (
@@ -121,26 +131,25 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-1 text-sm"
+                      className="rounded-xl bg-gray-50 hover:bg-gray-100 border-gray-200"
                     >
-                      {action.icon}
                       {action.label}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-64 p-2 z-50 bg-white">
+                  <PopoverContent className="w-64 p-2">
                     <div className="space-y-2">
                       {workspaces.map((workspace) => (
-                        <div key={workspace.id} className="p-2 hover:bg-gray-100 rounded-md flex items-center">
+                        <div key={workspace.id} className="p-2 hover:bg-gray-50 rounded-md flex items-center">
                           <span className="text-green-600 mr-2">⚖</span>
                           {workspace.name}
                         </div>
                       ))}
-                      <div className="flex justify-between mt-4 pt-2 border-t">
-                        <Button variant="ghost" size="sm" className="text-xs flex items-center gap-1">
-                          <Plus className="h-3.5 w-3.5" /> Add new
+                      <div className="flex justify-between mt-4 pt-2 border-t border-gray-100">
+                        <Button variant="ghost" size="sm" className="text-xs">
+                          Add new
                         </Button>
-                        <Button variant="ghost" size="sm" className="text-xs flex items-center gap-1">
-                          <List className="h-3.5 w-3.5" /> See all
+                        <Button variant="ghost" size="sm" className="text-xs">
+                          See all
                         </Button>
                       </div>
                     </div>
