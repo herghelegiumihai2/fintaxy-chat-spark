@@ -1,15 +1,18 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate, useLocation } from "react-router-dom";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname === "/" ? "accounting" : location.pathname.substring(1));
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -21,6 +24,7 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === "accounting") {
@@ -30,7 +34,8 @@ const Navbar = () => {
     }
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
-  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
+
+  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-4", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo on the left */}
         <a href="/" className="flex items-center">
@@ -40,14 +45,14 @@ const Navbar = () => {
         {/* Tabs in the center */}
         <div className="hidden md:block max-w-xl mx-auto h-full">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full h-full">
-            <TabsList className="w-full h-full grid grid-cols-3 gap-1 p-1 flex items-center bg-gray-50/70">
-              <TabsTrigger value="business" className="text-xs h-[80%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+            <TabsList className="w-full h-full grid grid-cols-3 gap-1 p-1.5 flex items-center bg-gray-50/70">
+              <TabsTrigger value="business" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Proprietari de afaceri
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="freelancers" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Freelanceri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="accounting" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Firmă de contabilitate
               </TabsTrigger>
             </TabsList>
@@ -56,7 +61,7 @@ const Navbar = () => {
 
         {/* CTA Button on the right */}
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-xs py-1.5 px-3 h-8" onClick={() => {
+          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-sm py-2.5 px-5 h-11" onClick={() => {
           const aboutSection = document.getElementById('about');
           if (aboutSection) {
             aboutSection.scrollIntoView({
@@ -70,7 +75,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-fintaxy-navy focus:outline-none focus:ring-2 focus:ring-fintaxy-blue focus:ring-opacity-50 rounded" aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}>
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -78,19 +83,19 @@ const Navbar = () => {
       {mobileMenuOpen && <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg p-4 animate-fade-in">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mb-3">
             <TabsList className="w-full grid grid-cols-1 gap-2">
-              <TabsTrigger value="business" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
+              <TabsTrigger value="business" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
                 Proprietari de afaceri
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
+              <TabsTrigger value="freelancers" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
                 Freelanceri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
+              <TabsTrigger value="accounting" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
                 Firmă de contabilitate
               </TabsTrigger>
             </TabsList>
           </Tabs>
           
-          <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-2 text-sm" onClick={() => {
+          <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-3 text-base" onClick={() => {
         setMobileMenuOpen(false);
         const aboutSection = document.getElementById('about');
         if (aboutSection) {
@@ -104,4 +109,5 @@ const Navbar = () => {
         </div>}
     </header>;
 };
+
 export default Navbar;
