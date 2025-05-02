@@ -40,9 +40,7 @@ const HeroAlt = ({
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 section-appear">
           <div className="inline-block mb-6">
-            <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">
-              Echipa de contabili si Platforma AI
-            </span>
+            <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Expert Contabil și Agent AI</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitate și management cu vocea ta.</h1>
