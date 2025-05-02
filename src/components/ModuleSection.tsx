@@ -67,9 +67,10 @@ const featureSections: FeatureSection[] = [
       }
     ],
     images: [
+      "public/lovable-uploads/83b4ca99-bb0c-436b-8a6a-472b79bcce0b.png",
       "public/lovable-uploads/65b45231-a0b6-482d-9539-118b345e8cdf.png",
-      "public/lovable-uploads/9d70cf20-45de-447c-ba58-274ef09157be.png",
-      "public/lovable-uploads/83b4ca99-bb0c-436b-8a6a-472b79bcce0b.png"
+      "public/lovable-uploads/9d70cf20-45de-447c-ba58-274ef09157be.png"
+      
     ]
   },
   {
