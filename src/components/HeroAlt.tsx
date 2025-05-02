@@ -28,7 +28,7 @@ const HeroAlt = ({
       }
     };
   }, []);
-  return <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden" ref={heroRef}>
+  return <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden py-[10px]">
       {/* Decorative elements - circles */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
       animationDelay: '-2s'
@@ -66,28 +66,11 @@ cu vocea ta.</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto section-appear" style={{
         transitionDelay: '0.2s'
       }}>
-          <div className="flex flex-col p-6 bg-white rounded-xl shadow-sm border border-slate-100 h-full">
-            <h3 className="font-semibold text-fintaxy-navy mb-4 text-xl">Asistent AI Voice-Driven</h3>
-            <p className="text-fintaxy-muted flex-grow">
-              Comunici prin voce, primești răspunsuri instant despre contabilitate și legislație fiscală. 
-              Îți face programări sau trimite emailuri direct din platformă.
-            </p>
-          </div>
           
-          <div className="flex flex-col p-6 bg-white rounded-xl shadow-sm border border-slate-100 h-full">
-            <h3 className="font-semibold text-fintaxy-navy mb-4 text-xl">Expert Contabil</h3>
-            <p className="text-fintaxy-muted flex-grow">
-              Contabil certificat CECCAR, specializat în domeniul tău, cu peste 3 ani experiență. 
-              Disponibil oricând.
-            </p>
-          </div>
           
-          <div className="flex flex-col p-6 bg-white rounded-xl shadow-sm border border-slate-100 h-full">
-            <h3 className="font-semibold text-fintaxy-navy mb-4 text-xl">Informații în Timp Real</h3>
-            <p className="text-fintaxy-muted flex-grow">
-              Accesează situația financiară fluxul de numerar și indicatorii cheie in afaceri oricând.
-            </p>
-          </div>
+          
+          
+          
         </div>
       </div>
     </section>;
