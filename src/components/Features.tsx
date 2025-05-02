@@ -156,7 +156,7 @@ const Features = () => {
             </ul>
           </div>
           
-          {/* Feature 4 */}
+          {/* Feature 4 - UPDATED DESCRIPTION */}
           <div 
             className="feature-card glass-card p-8 rounded-2xl stagger-item"
             ref={addToRefs}
@@ -180,7 +180,7 @@ const Features = () => {
             </ul>
           </div>
           
-          {/* Feature 5 */}
+          {/* Feature 5 - UPDATED DESCRIPTION */}
           <div 
             className="feature-card glass-card p-8 rounded-2xl stagger-item"
             ref={addToRefs}
@@ -204,7 +204,7 @@ const Features = () => {
             </ul>
           </div>
           
-          {/* Feature 6 */}
+          {/* Feature 6 - UPDATED DESCRIPTION */}
           <div 
             className="feature-card glass-card p-8 rounded-2xl stagger-item"
             ref={addToRefs}
