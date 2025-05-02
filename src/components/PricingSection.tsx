@@ -184,11 +184,11 @@ const PricingSection = () => {
         </div>
         
         <div className="flex justify-center mb-12 section-appear">
-          <Tabs value={selectedTab} onValueChange={setSelectedTab} defaultValue="srl" className="w-full max-w-md">
-            <TabsList className="grid w-full grid-cols-3 bg-blue-50">
-              <TabsTrigger value="srl">SRL</TabsTrigger>
-              <TabsTrigger value="pfa">PFA</TabsTrigger>
-              <TabsTrigger value="infiintare">Inființare</TabsTrigger>
+          <Tabs value={selectedTab} onValueChange={setSelectedTab} defaultValue="srl" className="w-full max-w-sm">
+            <TabsList className="grid w-full grid-cols-3 bg-blue-50 p-1">
+              <TabsTrigger value="srl" className="text-sm py-1.5 px-2">SRL</TabsTrigger>
+              <TabsTrigger value="pfa" className="text-sm py-1.5 px-2">PFA</TabsTrigger>
+              <TabsTrigger value="infiintare" className="text-sm py-1.5 px-2">Inființare</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
@@ -201,36 +201,37 @@ const PricingSection = () => {
                   key={index} 
                   className={`bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 flex flex-col
                     ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'} 
-                    min-w-[240px] w-[280px] max-w-[320px] flex-shrink-0`}
+                    min-w-[240px] w-[280px] max-w-[320px] flex-shrink-0 h-[460px]`}
                 >
-                  <div className={`p-6 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
-                    <h3 className="text-2xl font-semibold mb-1">{plan.title}</h3>
+                  <div className={`p-5 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
+                    <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
                     {plan.subtitle && (
-                      <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-fintaxy-muted'} mb-2`}>
+                      <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-fintaxy-muted'} mb-1`}>
                         {plan.subtitle}
                       </p>
                     )}
                     {plan.price && (
-                      <div className="font-bold text-3xl mb-0">{plan.price}</div>
+                      <div className="font-bold text-2xl">{plan.price}</div>
                     )}
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <ul className="space-y-4 mb-8 flex-1">
+                  <div className="p-5 flex-1 flex flex-col">
+                    <ul className="space-y-3 mb-6 flex-1">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle2 className="w-5 h-5 text-fintaxy-blue mr-2 flex-shrink-0 mt-0.5" />
-                          <span className="text-fintaxy-navy">{feature}</span>
+                          <CheckCircle2 className="w-4 h-4 text-fintaxy-blue mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-fintaxy-navy text-sm">{feature}</span>
                         </li>
                       ))}
                       
                       {plan.additionalInfo && plan.additionalInfo.map((info, idx) => (
-                        <li key={`info-${idx}`} className="text-fintaxy-muted text-sm mt-2">
+                        <li key={`info-${idx}`} className="text-fintaxy-muted text-xs mt-1.5">
                           {info}
                         </li>
                       ))}
                     </ul>
                     
                     <Button 
+                      size="sm"
                       className={`w-full mt-auto ${plan.highlighted 
                         ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white' 
                         : 'border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light'}`}

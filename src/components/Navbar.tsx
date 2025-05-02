@@ -35,7 +35,7 @@ const Navbar = () => {
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
 
-  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
+  return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo on the left */}
         <a href="/" className="flex items-center">
@@ -43,16 +43,16 @@ const Navbar = () => {
         </a>
 
         {/* Tabs in the center */}
-        <div className="hidden md:block max-w-2xl mx-auto h-full">
+        <div className="hidden md:block max-w-xl mx-auto h-full">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full h-full">
-            <TabsList className="w-full h-full grid grid-cols-3 gap-2 p-1.5 flex items-center">
-              <TabsTrigger value="business" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+            <TabsList className="w-full h-full grid grid-cols-3 gap-1 p-1 flex items-center bg-gray-50/70">
+              <TabsTrigger value="business" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Proprietari de afaceri
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="freelancers" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Freelanceri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="accounting" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Firmă de contabilitate
               </TabsTrigger>
             </TabsList>
@@ -61,7 +61,7 @@ const Navbar = () => {
 
         {/* CTA Button on the right */}
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" size="sm" onClick={() => {
+          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-xs py-1.5 px-3 h-8" onClick={() => {
           const aboutSection = document.getElementById('about');
           if (aboutSection) {
             aboutSection.scrollIntoView({
@@ -81,21 +81,21 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg p-4 animate-fade-in">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mb-4">
-            <TabsList className="w-full grid grid-cols-1 gap-3">
-              <TabsTrigger value="business" className="text-sm w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mb-3">
+            <TabsList className="w-full grid grid-cols-1 gap-2">
+              <TabsTrigger value="business" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
                 Proprietari de afaceri
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-sm w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+              <TabsTrigger value="freelancers" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
                 Freelanceri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-sm w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+              <TabsTrigger value="accounting" className="text-sm w-full py-2 rounded-md transition-all hover:bg-fintaxy-light">
                 Firmă de contabilitate
               </TabsTrigger>
             </TabsList>
           </Tabs>
           
-          <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-3" onClick={() => {
+          <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-2 text-sm" onClick={() => {
         setMobileMenuOpen(false);
         const aboutSection = document.getElementById('about');
         if (aboutSection) {
