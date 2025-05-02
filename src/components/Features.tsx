@@ -164,9 +164,9 @@ const Features = () => {
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <BrainCircuit className="text-fintaxy-blue w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Asistent inteligent</h3>
+            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Asistent AI Voice-Driven</h3>
             <p className="text-fintaxy-muted">
-              Răspunde la întrebări financiare complexe în limbaj natural, oferind rezultate precise și relevante.
+              Comunici prin voce, primești răspunsuri instant.
             </p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
@@ -188,9 +188,9 @@ const Features = () => {
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Lock className="text-fintaxy-blue w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Securitate avansată</h3>
+            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Expert Contabil</h3>
             <p className="text-fintaxy-muted">
-              Protejează datele financiare sensibile cu cele mai recente tehnologii de criptare și securitate.
+              Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând.
             </p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
@@ -212,9 +212,9 @@ const Features = () => {
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Zap className="text-fintaxy-blue w-6 h-6" />
             </div>
-            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Integrări native</h3>
+            <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Informații în Timp Real</h3>
             <p className="text-fintaxy-muted">
-              Se conectează cu softurile contabile existente precum Ciel, SmartBill, WinMentor și cu API-urile bancare.
+              Accesează situația financiară și indicatorii cheie in afacere - oricând.
             </p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">

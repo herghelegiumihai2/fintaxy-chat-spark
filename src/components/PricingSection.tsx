@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -73,7 +74,7 @@ const PricingSection = () => {
       features: [
         "Toate funcțiile AI pentru freelanceri",
         "1 Team Member",
-        "Assistant AI voice-driven",
+        "Comunici prin voce, primești răspunsuri instant",
         "Facturare automată"
       ],
       cta: "Incepe Acum"
@@ -85,7 +86,7 @@ const PricingSection = () => {
       features: [
         "Toate funcțiile AI pentru freelanceri",
         "3 Team Members",
-        "1 Accountant Expert",
+        "Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând",
         "Rapoarte personalizate",
         "Consultanță fiscală"
       ],
