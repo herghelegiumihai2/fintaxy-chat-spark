@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -110,8 +109,7 @@ const PricingSection = () => {
       features: [
         "Înființare completă SRL",
         "Suport juridic",
-        "Toate documentele necesare",
-        "1 an abonament Standard gratuit"
+        "Toate documentele necesare"
       ],
       additionalInfo: [
         "Taxe Registrul Comerțului",
@@ -126,8 +124,7 @@ const PricingSection = () => {
       features: [
         "Înființare completă PFA",
         "Suport juridic",
-        "Toate documentele necesare",
-        "6 luni abonament PFA Plus gratuit"
+        "Toate documentele necesare"
       ],
       additionalInfo: [
         "Acte necesare:",
