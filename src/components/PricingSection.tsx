@@ -194,52 +194,54 @@ const PricingSection = () => {
         </div>
         
         <div className="flex justify-center section-appear">
-          <div className="flex flex-wrap justify-center gap-8 w-full">
-            {getCurrentPlans().map((plan, index) => (
-              <div 
-                key={index} 
-                className={`bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 flex flex-col
-                  ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'} 
-                  w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] max-w-[320px]`}
-              >
-                <div className={`p-6 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
-                  <h3 className="text-2xl font-semibold mb-1">{plan.title}</h3>
-                  {plan.subtitle && (
-                    <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-fintaxy-muted'} mb-2`}>
-                      {plan.subtitle}
-                    </p>
-                  )}
-                  {plan.price && (
-                    <div className="font-bold text-3xl mb-0">{plan.price}</div>
-                  )}
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <ul className="space-y-4 mb-8 flex-1">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-fintaxy-blue mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-fintaxy-navy">{feature}</span>
-                      </li>
-                    ))}
+          <div className="flex overflow-x-auto pb-4 w-full justify-center">
+            <div className="flex flex-nowrap gap-4 md:gap-6 lg:gap-8">
+              {getCurrentPlans().map((plan, index) => (
+                <div 
+                  key={index} 
+                  className={`bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 flex flex-col
+                    ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'} 
+                    min-w-[240px] w-[280px] max-w-[320px] flex-shrink-0`}
+                >
+                  <div className={`p-6 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
+                    <h3 className="text-2xl font-semibold mb-1">{plan.title}</h3>
+                    {plan.subtitle && (
+                      <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-fintaxy-muted'} mb-2`}>
+                        {plan.subtitle}
+                      </p>
+                    )}
+                    {plan.price && (
+                      <div className="font-bold text-3xl mb-0">{plan.price}</div>
+                    )}
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <ul className="space-y-4 mb-8 flex-1">
+                      {plan.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <CheckCircle2 className="w-5 h-5 text-fintaxy-blue mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-fintaxy-navy">{feature}</span>
+                        </li>
+                      ))}
+                      
+                      {plan.additionalInfo && plan.additionalInfo.map((info, idx) => (
+                        <li key={`info-${idx}`} className="text-fintaxy-muted text-sm mt-2">
+                          {info}
+                        </li>
+                      ))}
+                    </ul>
                     
-                    {plan.additionalInfo && plan.additionalInfo.map((info, idx) => (
-                      <li key={`info-${idx}`} className="text-fintaxy-muted text-sm mt-2">
-                        {info}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button 
-                    className={`w-full mt-auto ${plan.highlighted 
-                      ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white' 
-                      : 'border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light'}`}
-                    onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}
-                  >
-                    {plan.cta}
-                  </Button>
+                    <Button 
+                      className={`w-full mt-auto ${plan.highlighted 
+                        ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white' 
+                        : 'border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light'}`}
+                      onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}
+                    >
+                      {plan.cta}
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
