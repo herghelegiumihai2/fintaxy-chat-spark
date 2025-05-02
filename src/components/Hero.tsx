@@ -44,7 +44,7 @@ const Hero = () => {
             Automatizează sarcinile contabile repetitive cu Agenți AI dedicați
           </h1>
           
-          <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Gestionezi afacerea doar vorbind, direct de pe telefon. Fintaxy, tot ce-ți trebuie, în buzunarul tău. Facturarea, gestiunea și contabilitatea – tu doar îi spui ce să facă.</p>
+          <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Fintaxy este platforma care transformă modul în care echipele de contabilitate lucrează, oferind agenți AI inteligenți care preiau sarcinile manuale și consumatoare de timp.</p>
           
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Button className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" size="lg" onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}>
