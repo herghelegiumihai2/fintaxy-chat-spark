@@ -1,18 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate, useLocation } from "react-router-dom";
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname === "/" ? "accounting" : location.pathname.substring(1));
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -24,7 +21,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === "accounting") {
@@ -34,7 +30,6 @@ const Navbar = () => {
     }
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
-
   return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo on the left */}
@@ -46,7 +41,7 @@ const Navbar = () => {
         <div className="hidden md:block max-w-xl mx-auto h-full">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full h-full">
             <TabsList className="w-full h-full grid grid-cols-3 gap-1 p-1 flex items-center bg-gray-50/70">
-              <TabsTrigger value="business" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="business" className="text-xs h-[80%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Proprietari de afaceri
               </TabsTrigger>
               <TabsTrigger value="freelancers" className="text-xs h-[70%] px-3 py-1.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
