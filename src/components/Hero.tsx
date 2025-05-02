@@ -1,49 +1,36 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
-    
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
-
-  return (
-    <section 
-      className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden"
-      ref={heroRef}
-    >
+  return <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden" ref={heroRef}>
       {/* Decorative elements - circles */}
-      <div 
-        className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float"
-        style={{ animationDelay: '-2s' }}
-      ></div>
-      <div 
-        className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/40 blur-[100px] animate-float"
-        style={{ animationDelay: '-1s' }}
-      ></div>
+      <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
+      animationDelay: '-2s'
+    }}></div>
+      <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/40 blur-[100px] animate-float" style={{
+      animationDelay: '-1s'
+    }}></div>
       
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 section-appear">
@@ -57,32 +44,22 @@ const Hero = () => {
             Automatizează sarcinile contabile repetitive cu Agenți AI dedicați
           </h1>
           
-          <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
-            Fintaxy este platforma care transformă modul în care echipele de contabilitate lucrează, 
-            oferind agenți AI inteligenți care preiau sarcinile manuale și consumatoare de timp.
-          </p>
+          <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Gestionezi afacerea doar vorbind, direct de pe telefon. Fintaxy, tot ce-ți trebuie, în buzunarul tău. Facturarea, gestiunea și contabilitatea – tu doar îi spui ce să facă.</p>
           
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button 
-              className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group"
-              size="lg"
-              onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}
-            >
+            <Button className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" size="lg" onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}>
               Programează o discuție
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button 
-              className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors"
-              variant="outline"
-              size="lg"
-              onClick={() => window.open('https://potent-scar-252.notion.site/fintaxy-prezentare', '_blank')}
-            >
+            <Button className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors" variant="outline" size="lg" onClick={() => window.open('https://potent-scar-252.notion.site/fintaxy-prezentare', '_blank')}>
               Află mai multe
             </Button>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto section-appear" style={{ transitionDelay: '0.2s' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto section-appear" style={{
+        transitionDelay: '0.2s'
+      }}>
           <div className="flex items-start p-6 bg-white rounded-xl shadow-sm border border-slate-100">
             <CheckCircle2 className="w-5 h-5 text-fintaxy-blue mr-3 flex-shrink-0 mt-1" />
             <div>
@@ -108,8 +85,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
