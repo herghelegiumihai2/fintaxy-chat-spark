@@ -193,13 +193,14 @@ const PricingSection = () => {
           </Tabs>
         </div>
         
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 section-appear">
+        <div className="flex justify-center section-appear">
+          <div className="flex flex-wrap justify-center gap-8 w-full">
             {getCurrentPlans().map((plan, index) => (
               <div 
                 key={index} 
                 className={`bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 flex flex-col
-                  ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'}`}
+                  ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'} 
+                  w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] max-w-[320px]`}
               >
                 <div className={`p-6 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
                   <h3 className="text-2xl font-semibold mb-1">{plan.title}</h3>
