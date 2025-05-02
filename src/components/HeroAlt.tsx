@@ -43,7 +43,8 @@ const HeroAlt = ({
             <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Contabil și Aplicatie + Agent AI</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitate și management cu vocea ta.</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitate și management 
+cu vocea ta.</h1>
           
           <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Spui ce vrei, Fintaxy execută. Contabilitate, facturi și gestiune – toate cu vocea.</p>
           
