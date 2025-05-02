@@ -76,17 +76,17 @@ cu vocea ta.</h1>
           <FeatureCard 
             icon={<BrainCircuit className="h-6 w-6 text-fintaxy-blue" />} 
             title="Asistent AI Voice-Driven" 
-            description="Comunici prin voce, primești răspunsuri instant despre contabilitate și legislație fiscală. Îți face programări sau trimite emailuri direct din platformă." 
+            description="Comunici prin voce, primești răspunsuri instant." 
           />
           <FeatureCard 
             icon={<FileSearch className="h-6 w-6 text-fintaxy-blue" />} 
             title="Expert Contabil" 
-            description="Contabil certificat CECCAR, specializat în domeniul tău, cu peste 3 ani experiență. Disponibil oricând." 
+            description="Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând." 
           />
           <FeatureCard 
             icon={<BarChart3 className="h-6 w-6 text-fintaxy-blue" />} 
             title="Informații în Timp Real" 
-            description="Accesează situația financiară fluxul de numerar și indicatorii cheie in afaceri oricând." 
+            description="Accesează situația financiară și indicatorii cheie in afacere - oricând." 
           />
         </div>
       </div>
