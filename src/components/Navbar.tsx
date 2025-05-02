@@ -1,15 +1,18 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate, useLocation } from "react-router-dom";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname === "/" ? "accounting" : location.pathname.substring(1));
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -21,6 +24,7 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === "accounting") {
@@ -30,6 +34,7 @@ const Navbar = () => {
     }
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
+
   return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo on the left */}
@@ -38,16 +43,16 @@ const Navbar = () => {
         </a>
 
         {/* Tabs in the center */}
-        <div className="hidden md:block max-w-2xl mx-auto">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="w-full grid grid-cols-3 gap-2 p-1.5 flex item-center">
-              <TabsTrigger value="business" className="text-sm md:text-base px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+        <div className="hidden md:block max-w-2xl mx-auto h-full">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full h-full">
+            <TabsList className="w-full h-full grid grid-cols-3 gap-2 p-1.5 flex items-center">
+              <TabsTrigger value="business" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Proprietari de afaceri
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-sm md:text-base px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="freelancers" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Freelanceri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-sm md:text-base px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+              <TabsTrigger value="accounting" className="text-sm md:text-base h-[80%] px-4 py-2 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
                 Firmă de contabilitate
               </TabsTrigger>
             </TabsList>
