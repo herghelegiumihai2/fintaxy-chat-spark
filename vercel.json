@@ -1,3 +1,4 @@
+
 {
     "version": 2,
     "framework": "vite",
@@ -14,5 +15,8 @@
                 "Access-Control-Allow-Headers": "Content-Type"
             }
         }
+    ],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
     ]
 }
