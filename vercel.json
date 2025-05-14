@@ -1,22 +1,18 @@
 
 {
-    "version": 2,
-    "framework": "vite",
-    "routes": [
-        {
-            "src": "/api/submit-form",
-            "methods": [
-                "POST",
-                "OPTIONS"
-            ],
-            "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type"
-            }
-        }
-    ],
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
-    ]
+  "version": 2,
+  "framework": "vite",
+  "headers": [
+    {
+      "source": "/api/submit-form",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
