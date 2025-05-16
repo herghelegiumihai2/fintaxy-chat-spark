@@ -1,8 +1,9 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle2 } from 'lucide-react';
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface PricingPlan {
   title: string;
@@ -17,7 +18,10 @@ interface PricingPlan {
 
 const PricingSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState("srl");
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Pricing plans data
   const srlPlans: PricingPlan[] = [
@@ -25,7 +29,8 @@ const PricingSection = () => {
       title: "Start",
       price: "50 EUR",
       features: [
-        "Unlimited Transactions",
+        "Documente contabile: 30",
+        "Importuri: 0",
         "2 Team Members",
         "1 Salariat",
         "AI Assistant",
@@ -37,11 +42,12 @@ const PricingSection = () => {
       title: "Standard",
       price: "79 EUR",
       features: [
+        "Documente contabile: 50",
+        "Importuri: 1",
         "All AI Accounting features",
         "5 Team Members",
         "3 Salariati",
         "1 Accountant Expert",
-        "Catch-up: Last year Bookkeeping"
       ],
       cta: "Incepe Acum",
       highlighted: true,
@@ -51,11 +57,12 @@ const PricingSection = () => {
       title: "Pro",
       price: "150 EUR",
       features: [
+        "Documente contabile: 120",
+        "Importuri: 5",
         "All AI Accounting features",
         "10 Team Members",
         "5 Salariati",
         "1 Accountant Expert",
-        "Catch-up: Last 3 years Bookkeeping"
       ],
       cta: "Incepe Acum",
       formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
@@ -77,8 +84,9 @@ const PricingSection = () => {
       subtitle: "Normă de Venit",
       price: "10 EUR",
       features: [
-        "Toate funcțiile AI pentru freelanceri",
+        "Toate funcțiile AI",
         "1 Team Member",
+        "1 Accounting Expert",
         "Comunici prin voce, primești răspunsuri instant",
         "Facturare automată"
       ],
@@ -90,9 +98,11 @@ const PricingSection = () => {
       subtitle: "Real",
       price: "30 EUR",
       features: [
-        "Toate funcțiile AI pentru freelanceri",
+        "Toate funcțiile AI",
         "3 Team Members",
-        "Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând",
+        "1 Accounting Expert",
+        "Comunici prin voce, primești răspunsuri instant",
+        "Facturare automată",
         "Rapoarte personalizate",
         "Consultanță fiscală"
       ],
@@ -189,8 +199,60 @@ const PricingSection = () => {
     }
   };
 
+  // Check if scroll buttons should be visible
+  const checkScrollButtons = () => {
+    if (cardsContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = cardsContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10); // 10px buffer
+    }
+  };
+
+  // Scroll the cards container
+  const scrollCards = (direction: 'left' | 'right') => {
+    if (cardsContainerRef.current) {
+      const scrollAmount = 300; // Adjust scroll amount as needed
+      const newScrollLeft = direction === 'left' 
+        ? cardsContainerRef.current.scrollLeft - scrollAmount 
+        : cardsContainerRef.current.scrollLeft + scrollAmount;
+      
+      cardsContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+      
+      // Update button state after scrolling
+      setTimeout(checkScrollButtons, 400);
+    }
+  };
+
+  // Initialize scroll check and add event listener
+  useEffect(() => {
+    checkScrollButtons();
+    
+    const container = cardsContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollButtons);
+      
+      // Also check on resize
+      window.addEventListener('resize', checkScrollButtons);
+    }
+    
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', checkScrollButtons);
+      }
+      window.removeEventListener('resize', checkScrollButtons);
+    };
+  }, [selectedTab]);
+
+  // Recheck buttons when tab changes
+  useEffect(() => {
+    setTimeout(checkScrollButtons, 100);
+  }, [selectedTab]);
+
   return (
-    <section id="pricing" className="py-20 px-6" ref={sectionRef}>
+    <section id="pricing" className="py-20 px-4 sm:px-6" ref={sectionRef}>
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 section-appear">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy mb-6">
@@ -201,7 +263,7 @@ const PricingSection = () => {
           </p>
         </div>
         
-        <div className="flex justify-center mb-12 section-appear">
+        <div className="flex justify-center mb-8 section-appear">
           <Tabs value={selectedTab} onValueChange={setSelectedTab} defaultValue="srl" className="w-full max-w-sm">
             <TabsList className="grid w-full grid-cols-3 bg-blue-50 p-1">
               <TabsTrigger value="srl" className="text-sm py-1.5 px-2">SRL</TabsTrigger>
@@ -211,17 +273,44 @@ const PricingSection = () => {
           </Tabs>
         </div>
         
-        <div className="flex justify-center section-appear">
-          <div className="flex overflow-x-auto pb-4 w-full justify-center">
-            <div className="flex flex-nowrap gap-4 md:gap-6 lg:gap-8">
-              {getCurrentPlans().map((plan, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 flex flex-col
-                    ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'} 
-                    min-w-[240px] w-[280px] max-w-[320px] flex-shrink-0 h-[460px]`}
+        <div className="relative section-appear">
+          {/* Scroll buttons - only show on larger screens */}
+          <div className="hidden md:block">
+            <button 
+              onClick={() => scrollCards('left')} 
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              disabled={!canScrollLeft}
+              aria-label="Scroll left"
+            >
+              <ArrowLeft className="w-5 h-5 text-fintaxy-navy" />
+            </button>
+            
+            <button 
+              onClick={() => scrollCards('right')} 
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              disabled={!canScrollRight}
+              aria-label="Scroll right"
+            >
+              <ArrowRight className="w-5 h-5 text-fintaxy-navy" />
+            </button>
+          </div>
+          
+          {/* Cards container with touch scroll for mobile */}
+          <div 
+            ref={cardsContainerRef} 
+            className="flex overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {getCurrentPlans().map((plan, index) => (
+              <div 
+                key={index} 
+                className="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[320px] md:w-auto flex"
+              >
+                <Card 
+                  className={`w-full flex flex-col h-full transition-all duration-300
+                    ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'}`}
                 >
-                  <div className={`p-5 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
+                  <CardHeader className={`p-5 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
                     <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
                     {plan.subtitle && (
                       <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-fintaxy-muted'} mb-1`}>
@@ -231,9 +320,9 @@ const PricingSection = () => {
                     {plan.price && (
                       <div className="font-bold text-2xl">{plan.price}</div>
                     )}
-                  </div>
-                  <div className="p-5 flex-1 flex flex-col">
-                    <ul className="space-y-3 mb-6 flex-1">
+                  </CardHeader>
+                  <CardContent className="p-5 flex-1">
+                    <ul className="space-y-3">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
                           <CheckCircle2 className="w-4 h-4 text-fintaxy-blue mr-2 flex-shrink-0 mt-0.5" />
@@ -247,22 +336,41 @@ const PricingSection = () => {
                         </li>
                       ))}
                     </ul>
-                    
+                  </CardContent>
+                  <CardFooter className="px-5 pb-5 pt-0 mt-auto">
                     <Button 
                       size="sm"
-                      className={`w-full mt-auto ${plan.highlighted 
+                      className={`w-full ${plan.highlighted 
                         ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white' 
                         : 'border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light'}`}
                       onClick={() => plan.cta === "Vreau să fiu sunat" ? scrollToContact() : window.open(plan.formUrl, '_blank')}
                     >
                       {plan.cta}
                     </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  </CardFooter>
+                </Card>
+              </div>
+            ))}
+          </div>
+          
+          {/* Mobile swipe indicator */}
+          <div className="flex justify-center mt-4 md:hidden">
+            <p className="text-xs text-fintaxy-muted flex items-center gap-1">
+              <ArrowLeft className="w-3 h-3" /> Swipe pentru a vedea mai multe <ArrowRight className="w-3 h-3" />
+            </p>
           </div>
         </div>
+        
+        {/* Add this CSS for hiding scrollbars while keeping functionality */}
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
       </div>
     </section>
   );
