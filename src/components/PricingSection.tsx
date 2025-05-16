@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -74,7 +73,8 @@ const PricingSection = () => {
       title: "Personalizat",
       price: "",
       features: [
-        "Daca nu te incadrezi in nici o categorie sau doresti o consultatie"
+        "Daca nu te incadrezi in nici o categorie sau doresti o consultatie",
+        "Dacă dorești să-ți aduci propriul contabil pe platforma Fintaxy"
       ],
       cta: "Vreau să fiu sunat",
       formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
@@ -270,14 +270,10 @@ const PricingSection = () => {
   const currentPlans = getCurrentPlans();
   const numPlans = currentPlans.length;
   
-  // Calculate optimal card width based on number of cards
+  // Calculate card width based on number of plans
   const getCardWidthClass = () => {
-    switch(numPlans) {
-      case 1: return "w-full max-w-md";
-      case 2: return "w-full max-w-sm";
-      case 3: return "w-full max-w-xs";
-      default: return "w-full max-w-xs";
-    }
+    // Use consistent width regardless of plan count
+    return "w-[280px]";
   };
 
   return (
@@ -330,11 +326,11 @@ const PricingSection = () => {
             </button>
           </div>
           
-          {/* Cards container with improved layout */}
+          {/* Cards container with improved alignment */}
           <div className="flex justify-center">
             <div 
               ref={cardsContainerRef} 
-              className="flex overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 mx-auto"
+              className="flex overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory gap-4 md:gap-6 mx-auto justify-center"
               style={{ 
                 scrollbarWidth: 'none', 
                 msOverflowStyle: 'none',
@@ -344,17 +340,11 @@ const PricingSection = () => {
               {getCurrentPlans().map((plan, index) => (
                 <div 
                   key={index} 
-                  className={cn(
-                    "snap-center flex-shrink-0 min-w-[280px] max-w-[350px] w-[85vw] sm:w-auto flex",
-                    numPlans <= 3 ? "md:w-auto" : "md:min-w-[280px]"
-                  )}
-                  style={{
-                    flex: numPlans <= 3 ? `1 1 ${100 / Math.min(numPlans, 3)}%` : "0 0 auto"
-                  }}
+                  className="snap-center flex-shrink-0"
                 >
                   <Card 
                     className={cn(
-                      "w-full flex flex-col h-full min-h-[480px] transition-all duration-300",
+                      "w-[280px] flex flex-col h-full min-h-[480px] transition-all duration-300",
                       plan.highlighted 
                         ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' 
                         : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'
@@ -419,6 +409,18 @@ const PricingSection = () => {
           <div className="flex justify-center mt-4 md:hidden">
             <p className="text-xs text-fintaxy-muted flex items-center gap-1">
               <ArrowLeft className="w-3 h-3" /> Swipe pentru a vedea mai multe <ArrowRight className="w-3 h-3" />
+            </p>
+          </div>
+        </div>
+        
+        {/* Final CTA section with aligned text */}
+        <div className="mt-16 text-center section-appear">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-8">
+            <h3 className="text-2xl font-semibold text-fintaxy-navy">
+              Fă-ți viața mai ușoară cu Fintaxy AI
+            </h3>
+            <p className="text-fintaxy-muted">
+              Lasă-ne datele de contact și te sunăm noi
             </p>
           </div>
         </div>
