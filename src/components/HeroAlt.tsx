@@ -1,18 +1,14 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit, FileSearch, BarChart3 } from "lucide-react";
 import FeatureCard from './FeatureCard';
-
 interface HeroAltProps {
   userType: 'business' | 'freelancer';
 }
-
 const HeroAlt = ({
   userType
 }: HeroAltProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -24,18 +20,15 @@ const HeroAlt = ({
     }, {
       threshold: 0.1
     });
-
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
-
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
-
   return <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden py-[10px]">
       {/* Decorative elements - circles */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
@@ -66,31 +59,16 @@ cu vocea ta.</h1>
             </Button>
           </div>
           
-          <p className="text-fintaxy-muted text-sm mt-4 italic">
-            Încercare gratuită de 14 zile, fără card
-          </p>
+          <p className="text-fintaxy-muted text-sm mt-4 italic">Încercare gratuită de 30 zile.</p>
         </div>
         
         {/* Feature Cards moved here from Freelancers page */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
-          <FeatureCard 
-            icon={<BrainCircuit className="h-6 w-6 text-fintaxy-blue" />} 
-            title="Asistent AI Voice-Driven" 
-            description="Comunici prin voce, primești răspunsuri instant." 
-          />
-          <FeatureCard 
-            icon={<FileSearch className="h-6 w-6 text-fintaxy-blue" />} 
-            title="Expert Contabil" 
-            description="Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând." 
-          />
-          <FeatureCard 
-            icon={<BarChart3 className="h-6 w-6 text-fintaxy-blue" />} 
-            title="Informații în Timp Real" 
-            description="Accesează situația financiară și indicatorii cheie in afacere - oricând." 
-          />
+          <FeatureCard icon={<BrainCircuit className="h-6 w-6 text-fintaxy-blue" />} title="Asistent AI Voice-Driven" description="Comunici prin voce, primești răspunsuri instant." />
+          <FeatureCard icon={<FileSearch className="h-6 w-6 text-fintaxy-blue" />} title="Expert Contabil" description="Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând." />
+          <FeatureCard icon={<BarChart3 className="h-6 w-6 text-fintaxy-blue" />} title="Informații în Timp Real" description="Accesează situația financiară și indicatorii cheie in afacere - oricând." />
         </div>
       </div>
     </section>;
 };
-
 export default HeroAlt;
