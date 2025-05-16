@@ -361,8 +361,8 @@ const PricingSection = () => {
           </div>
         </div>
         
-        {/* Add this CSS for hiding scrollbars while keeping functionality */}
-        <style jsx>{`
+        {/* Fix: Remove the 'jsx' attribute from the style tag */}
+        <style>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
           }
