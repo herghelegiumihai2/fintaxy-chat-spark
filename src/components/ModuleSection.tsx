@@ -94,10 +94,10 @@ const featureSections: FeatureSection[] = [
       }
     ],
     images: [
-      "/lovable-uploads/52f83da9-ef32-4535-b2b4-1d134ec2e399.png",
-      "/lovable-uploads/55bd68b6-9bd6-437d-9c20-bea273524b3d.png",
-      "/lovable-uploads/9a807bbe-6cfa-4f46-9689-6990d64c672f.png",
-      "/lovable-uploads/34995e56-1ea7-4264-984a-603579d62533.png"
+      "/lovable-uploads/a1137132-540a-4822-975a-69466309440d.png", // Photo 1 at position 1
+      "/lovable-uploads/d51803ee-8838-4953-b37d-7bc1d967c5b1.png", // Photo 2 at position 2
+      "/lovable-uploads/aa32fdc7-4817-4508-a98c-3e25f43919ce.png", // Photo 3 at position 3
+      "/lovable-uploads/e6b08081-10f2-4c62-99e0-78fdcea4356d.png"  // Photo 4 at position 4
     ]
   },
   {
@@ -121,8 +121,8 @@ const featureSections: FeatureSection[] = [
       }
     ],
     images: [
-      "/lovable-uploads/34995e56-1ea7-4264-984a-603579d62533.png",
-      "/lovable-uploads/5a067c6b-29a3-425a-983f-fa2ea0be07bf.png"
+      "/lovable-uploads/06d35fd1-eddb-4bb2-8a49-32b7bab4f08c.png", // Photo 5 at position 1
+      "/lovable-uploads/0df6a437-5b17-4dea-bf1f-fc4579e1829c.png"  // Photo 6 at position 2
     ]
   }
 ];
