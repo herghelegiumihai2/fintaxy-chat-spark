@@ -68,7 +68,9 @@ const Business = () => {
       
       <ModuleSection />
       <SecuritySection />
-      <Testimonials />
+      <div id="despre-noi">
+        <Testimonials />
+      </div>
       <FAQSection />
       <PricingSection />
       <FinalCTA />

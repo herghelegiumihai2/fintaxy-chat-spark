@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -193,7 +194,20 @@ const PricingSection = () => {
 
   // Function to handle smooth scroll to contact section
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
+    // Check if we're on the business page
+    const isBusinessPage = window.location.pathname.includes('/business');
+    
+    // If on business page, scroll to despre-noi section
+    if (isBusinessPage) {
+      const despreNoiSection = document.getElementById('despre-noi');
+      if (despreNoiSection) {
+        despreNoiSection.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
+    
+    // Default behavior for other pages
+    const contactSection = document.getElementById('contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -295,10 +309,10 @@ const PricingSection = () => {
             </button>
           </div>
           
-          {/* Cards container with touch scroll for mobile */}
+          {/* Cards container with touch scroll for mobile - Modified for consistent heights and better centering */}
           <div 
             ref={cardsContainerRef} 
-            className="flex overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
+            className="flex justify-center overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {getCurrentPlans().map((plan, index) => (
@@ -307,7 +321,7 @@ const PricingSection = () => {
                 className="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[320px] md:w-auto flex"
               >
                 <Card 
-                  className={`w-full flex flex-col h-full transition-all duration-300
+                  className={`w-full flex flex-col h-full min-h-[420px] transition-all duration-300
                     ${plan.highlighted ? 'border-2 border-fintaxy-blue ring-4 ring-blue-100 transform hover:-translate-y-1' : 'border border-gray-100 hover:border-fintaxy-blue hover:shadow-md'}`}
                 >
                   <CardHeader className={`p-5 ${plan.highlighted ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 text-white' : 'border-b border-gray-100'}`}>
@@ -361,7 +375,7 @@ const PricingSection = () => {
           </div>
         </div>
         
-        {/* Fix: Remove the 'jsx' attribute from the style tag */}
+        {/* Style for hiding scrollbars */}
         <style>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
