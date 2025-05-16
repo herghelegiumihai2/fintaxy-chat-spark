@@ -1,10 +1,7 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ShieldCheck, Lock } from 'lucide-react';
-
 const SecuritySection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -16,18 +13,15 @@ const SecuritySection = () => {
     }, {
       threshold: 0.1
     });
-    
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
-  
   return <section className="py-20 px-6 bg-fintaxy-navy text-white" ref={sectionRef}>
       <div className="container mx-auto max-w-7xl section-appear">
         <div className="max-w-3xl mx-auto text-center">
@@ -49,15 +43,10 @@ const SecuritySection = () => {
           </div>
           
           <div className="mt-12 flex justify-center">
-            <img 
-              src="/lovable-uploads/a9844500-ca59-41ce-80fa-cb3fa8c9b30c.png" 
-              alt="Certificări de securitate" 
-              className="max-w-full h-auto w-3/4 md:w-1/2" 
-            />
+            
           </div>
         </div>
       </div>
     </section>;
 };
-
 export default SecuritySection;
