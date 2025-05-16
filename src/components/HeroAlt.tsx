@@ -3,9 +3,11 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit, FileSearch, BarChart3 } from "lucide-react";
 import FeatureCard from './FeatureCard';
+
 interface HeroAltProps {
   userType: 'business' | 'freelancer';
 }
+
 const HeroAlt = ({
   userType
 }: HeroAltProps) => {
@@ -29,15 +31,18 @@ const HeroAlt = ({
     }, {
       threshold: 0.1
     });
+    
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
+    
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
+  
   return <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden py-[10px]">
       {/* Decorative elements - circles */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
@@ -80,4 +85,5 @@ cu vocea ta.</h1>
       </div>
     </section>;
 };
+
 export default HeroAlt;

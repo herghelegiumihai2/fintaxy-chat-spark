@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, BarChart3, BrainCircuit, Mail, Clock, MessageSquareText, FileText, FileSearch, CreditCard, RefreshCcw, FileCheck } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -69,7 +68,7 @@ const featureSections: FeatureSection[] = [
     ],
     images: [
       "/lovable-uploads/83b4ca99-bb0c-436b-8a6a-472b79bcce0b.png",
-      "/lovable-uploads/52f83da9-ef32-4535-b2b4-1d134ec2e399.png",
+      "/lovable-uploads/354d93f0-0f22-4dfe-88e5-43ed18b0f9d3.png",
       "/lovable-uploads/65b45231-a0b6-482d-9539-118b345e8cdf.png",
       "/lovable-uploads/9d70cf20-45de-447c-ba58-274ef09157be.png"
     ]
@@ -95,7 +94,7 @@ const featureSections: FeatureSection[] = [
       }
     ],
     images: [
-      "/lovable-uploads/0b4108ad-feef-4247-873f-d56c7d5af58c.png",
+      "/lovable-uploads/52f83da9-ef32-4535-b2b4-1d134ec2e399.png",
       "/lovable-uploads/55bd68b6-9bd6-437d-9c20-bea273524b3d.png",
       "/lovable-uploads/9a807bbe-6cfa-4f46-9689-6990d64c672f.png",
       "/lovable-uploads/34995e56-1ea7-4264-984a-603579d62533.png"
@@ -122,7 +121,7 @@ const featureSections: FeatureSection[] = [
       }
     ],
     images: [
-      "/lovable-uploads/27fa7aeb-049d-4477-94ec-a2f7ad151c1f.png",
+      "/lovable-uploads/34995e56-1ea7-4264-984a-603579d62533.png",
       "/lovable-uploads/5a067c6b-29a3-425a-983f-fa2ea0be07bf.png"
     ]
   }

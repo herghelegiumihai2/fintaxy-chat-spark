@@ -62,7 +62,7 @@ const FinalCTA = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+    <section id="contact-section" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Text (was right side before) */}
@@ -81,7 +81,7 @@ const FinalCTA = () => {
             <div className="space-y-4">
               <Button 
                 className="w-full sm:w-auto bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white"
-                onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}
+                onClick={() => window.open('https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form', '_blank')}
               >
                 Începe
               </Button>

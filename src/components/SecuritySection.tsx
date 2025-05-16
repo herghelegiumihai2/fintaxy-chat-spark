@@ -49,7 +49,11 @@ const SecuritySection = () => {
           </div>
           
           <div className="mt-12 flex justify-center">
-            <img src="/lovable-uploads/a9844500-ca59-41ce-80fa-cb3fa8c9b30c.png" alt="Certificări de securitate" className="max-w-full h-auto" />
+            <img 
+              src="/lovable-uploads/a9844500-ca59-41ce-80fa-cb3fa8c9b30c.png" 
+              alt="Certificări de securitate" 
+              className="max-w-full h-auto w-3/4 md:w-1/2" 
+            />
           </div>
         </div>
       </div>
