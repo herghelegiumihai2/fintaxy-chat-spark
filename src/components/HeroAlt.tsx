@@ -1,25 +1,22 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit, FileSearch, BarChart3 } from "lucide-react";
 import FeatureCard from './FeatureCard';
-
 interface HeroAltProps {
   userType: 'business' | 'freelancer';
 }
-
 const HeroAlt = ({
   userType
 }: HeroAltProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
-  
   const scrollToContactSection = () => {
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -31,18 +28,15 @@ const HeroAlt = ({
     }, {
       threshold: 0.1
     });
-    
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
-    
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
-  
   return <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden py-[10px]">
       {/* Decorative elements - circles */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
@@ -58,8 +52,7 @@ const HeroAlt = ({
             <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Contabil și Aplicatie + Agent AI</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitate și management 
-cu vocea ta.</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitatea și Managementul Afacerii Gestionat cu Vocea Ta</h1>
           
           <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Spui ce vrei, Fintaxy execută. Contabilitate, facturi și gestiune – toate cu vocea.</p>
           
@@ -85,5 +78,4 @@ cu vocea ta.</h1>
       </div>
     </section>;
 };
-
 export default HeroAlt;
