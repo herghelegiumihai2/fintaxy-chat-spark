@@ -1,60 +1,48 @@
-
 import React, { useEffect, useRef } from 'react';
-import { 
-  FileText, RefreshCcw, BarChart3, 
-  BrainCircuit, Lock, Zap, CheckCircle 
-} from 'lucide-react';
-
+import { FileText, RefreshCcw, BarChart3, BrainCircuit, Lock, Zap, CheckCircle } from 'lucide-react';
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement[]>([]);
-  
+
   // Add items to the refs array
   const addToRefs = (el: HTMLDivElement) => {
     if (el && !itemsRef.current.includes(el)) {
       itemsRef.current.push(el);
     }
   };
-  
   useEffect(() => {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-            sectionObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    const itemsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
-    );
-    
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    const itemsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    });
     if (sectionRef.current) {
       sectionObserver.observe(sectionRef.current);
     }
-    
     itemsRef.current.forEach(item => {
       if (item) {
         itemsObserver.observe(item);
       }
     });
-    
     return () => {
       if (sectionRef.current) {
         sectionObserver.unobserve(sectionRef.current);
       }
-      
       itemsRef.current.forEach(item => {
         if (item) {
           itemsObserver.unobserve(item);
@@ -62,22 +50,15 @@ const Features = () => {
       });
     };
   }, []);
-
-  return (
-    <section id="features" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+  return <section id="features" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto max-w-7xl">
-        <div 
-          className="text-center mb-16 section-appear"
-          ref={sectionRef}
-        >
+        <div className="text-center mb-16 section-appear" ref={sectionRef}>
           <div className="inline-block mb-4">
             <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">
               Capabilități
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-3xl mx-auto mb-6">
-            Ce poate face un Agent AI pentru finanțe?
-          </h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-3xl mx-auto mb-6">Economisește 76 de ore pe lună</h2>
           <p className="text-fintaxy-muted max-w-2xl mx-auto">
             Agenții noștri AI sunt concepuți pentru a prelua sarcinile repetitive și a oferi suport echipelor de contabilitate, permițându-le să se concentreze pe activități cu valoare adăugată mai mare.
           </p>
@@ -85,10 +66,7 @@ const Features = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <FileText className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -109,10 +87,7 @@ const Features = () => {
           </div>
           
           {/* Feature 2 */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <RefreshCcw className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -133,10 +108,7 @@ const Features = () => {
           </div>
           
           {/* Feature 3 */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <BarChart3 className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -157,10 +129,7 @@ const Features = () => {
           </div>
           
           {/* Feature 4 - UPDATED DESCRIPTION */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <BrainCircuit className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -181,10 +150,7 @@ const Features = () => {
           </div>
           
           {/* Feature 5 - UPDATED DESCRIPTION */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Lock className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -205,10 +171,7 @@ const Features = () => {
           </div>
           
           {/* Feature 6 - UPDATED DESCRIPTION */}
-          <div 
-            className="feature-card glass-card p-8 rounded-2xl stagger-item"
-            ref={addToRefs}
-          >
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Zap className="text-fintaxy-blue w-6 h-6" />
             </div>
@@ -229,8 +192,6 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Features;
