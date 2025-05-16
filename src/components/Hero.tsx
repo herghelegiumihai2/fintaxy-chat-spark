@@ -1,8 +1,11 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -14,15 +17,26 @@ const Hero = () => {
     }, {
       threshold: 0.1
     });
+    
     if (heroRef.current) {
       observer.observe(heroRef.current);
     }
+    
     return () => {
       if (heroRef.current) {
         observer.unobserve(heroRef.current);
       }
     };
   }, []);
+
+  // Function to handle smooth scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden" ref={heroRef}>
       {/* Decorative elements - circles */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/30 blur-[80px] animate-float" style={{
@@ -51,8 +65,8 @@ const Hero = () => {
               Programează o discuție
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors" variant="outline" size="lg" onClick={() => window.open('https://potent-scar-252.notion.site/fintaxy-prezentare', '_blank')}>
-              Află mai multe
+            <Button className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors" variant="outline" size="lg" onClick={scrollToContact}>
+              Vreau să fiu sunat
             </Button>
           </div>
         </div>
@@ -87,4 +101,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;

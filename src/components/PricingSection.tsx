@@ -12,6 +12,7 @@ interface PricingPlan {
   cta: string;
   additionalInfo?: string[];
   highlighted?: boolean;
+  formUrl?: string;
 }
 
 const PricingSection = () => {
@@ -29,7 +30,8 @@ const PricingSection = () => {
         "1 Salariat",
         "AI Assistant",
       ],
-      cta: "Incepe Acum"
+      cta: "Incepe Acum",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     },
     {
       title: "Standard",
@@ -42,7 +44,8 @@ const PricingSection = () => {
         "Catch-up: Last year Bookkeeping"
       ],
       cta: "Incepe Acum",
-      highlighted: true
+      highlighted: true,
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     },
     {
       title: "Pro",
@@ -54,7 +57,8 @@ const PricingSection = () => {
         "1 Accountant Expert",
         "Catch-up: Last 3 years Bookkeeping"
       ],
-      cta: "Incepe Acum"
+      cta: "Incepe Acum",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     },
     {
       title: "Personalizat",
@@ -62,7 +66,8 @@ const PricingSection = () => {
       features: [
         "Daca nu te incadrezi in nici o categorie sau doresti o consultatie"
       ],
-      cta: "Vreau să fiu sunat"
+      cta: "Vreau să fiu sunat",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     }
   ];
 
@@ -77,7 +82,8 @@ const PricingSection = () => {
         "Comunici prin voce, primești răspunsuri instant",
         "Facturare automată"
       ],
-      cta: "Incepe Acum"
+      cta: "Incepe Acum",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     },
     {
       title: "PFA Plus",
@@ -91,7 +97,8 @@ const PricingSection = () => {
         "Consultanță fiscală"
       ],
       cta: "Incepe Acum",
-      highlighted: true
+      highlighted: true,
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     },
     {
       title: "Personalizat",
@@ -99,7 +106,8 @@ const PricingSection = () => {
       features: [
         "Daca nu te incadrezi in nici o categorie sau doresti o consultatie"
       ],
-      cta: "Vreau să fiu sunat"
+      cta: "Vreau să fiu sunat",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
     }
   ];
 
@@ -117,7 +125,8 @@ const PricingSection = () => {
         "Înființare Gratuită Pentru toți antreprenorii care aleg și contabilitate"
       ],
       cta: "Incepe Acum",
-      highlighted: true
+      highlighted: true,
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pag3oPTY2mZaISXFh/form"
     },
     {
       title: "PFA",
@@ -133,7 +142,8 @@ const PricingSection = () => {
         "• Copie a dovezii de spațiu + copii C.I. proprietari pentru sediul social",
         "• Documente care atestă calificarea în domeniul activității pe care urmează să o prestați"
       ],
-      cta: "Incepe Acum"
+      cta: "Incepe Acum",
+      formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pag3oPTY2mZaISXFh/form"
     }
   ];
 
@@ -170,6 +180,14 @@ const PricingSection = () => {
       }
     };
   }, []);
+
+  // Function to handle smooth scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="pricing" className="py-20 px-6" ref={sectionRef}>
@@ -235,7 +253,7 @@ const PricingSection = () => {
                       className={`w-full mt-auto ${plan.highlighted 
                         ? 'bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white' 
                         : 'border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light'}`}
-                      onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}
+                      onClick={() => plan.cta === "Vreau să fiu sunat" ? scrollToContact() : window.open(plan.formUrl, '_blank')}
                     >
                       {plan.cta}
                     </Button>
