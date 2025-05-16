@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
@@ -61,9 +62,9 @@ const FinalCTA = () => {
   };
   return <section id="contact-section" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left side - Text (was right side before) */}
-          <div>
+          <div className="flex flex-col items-start self-start">
             <h2 className="text-3xl md:text-4xl font-semibold text-fintaxy-navy mb-6">Fă-ți viața mai ușoară cu Fintaxy</h2>
             
             <p className="text-fintaxy-muted leading-relaxed mb-10 text-lg">
@@ -85,7 +86,7 @@ const FinalCTA = () => {
           </div>
           
           {/* Right side - Form (was left side before) */}
-          <div className="bg-white rounded-2xl shadow-md p-8">
+          <div className="bg-white rounded-2xl shadow-md p-8 self-start">
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-6">
               Lasă-ne datele de contact și te sunăm noi
             </h3>
