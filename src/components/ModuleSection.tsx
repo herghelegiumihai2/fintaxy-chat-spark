@@ -163,10 +163,8 @@ const ModuleSection = () => {
               Capabilități
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-3xl mx-auto mb-6">Redu fricțiunea lunara, la 5 min conta pe luna!</h2>
-          <p className="text-fintaxy-muted max-w-2xl mx-auto">
-            Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.
-          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-3xl mx-auto mb-6">Redu fricțiunea lunară, la 5 min conta pe lună!</h2>
+          <p className="text-fintaxy-muted max-w-2xl mx-auto">Uită de facturi, pontaje și griji –  Contabilitate pe Autopilot</p>
         </div>
         
         <div className="space-y-32">
