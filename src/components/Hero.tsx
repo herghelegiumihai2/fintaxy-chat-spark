@@ -50,7 +50,7 @@ const Hero = () => {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Agenți AI pentru contabilitate</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Agenți AI pentru Contabilitate</h1>
           
           <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.</p>
           
