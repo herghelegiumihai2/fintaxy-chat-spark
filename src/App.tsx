@@ -18,8 +18,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/accounting" element={<Navigate to="/" replace />} /> {/* Redirect /accounting to / */}
+          <Route path="/" element={<Navigate to="/business" replace />} />
+          <Route path="/index" element={<Index />} />
+          <Route path="/accounting" element={<Navigate to="/business" replace />} />
           <Route path="/business" element={<Business />} />
           <Route path="/freelancers" element={<Freelancers />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
