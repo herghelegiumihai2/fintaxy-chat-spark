@@ -62,7 +62,11 @@ const HeroAlt = ({
         const items = carouselRef.current.querySelectorAll('.carousel-item');
         if (items.length > 0) {
           const nextIndex = (activeSlide + 1) % items.length;
-          items[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          // Use scrollLeft instead of scrollIntoView to prevent page navigation
+          if (carouselRef.current.parentElement) {
+            const scrollAmount = nextIndex * (carouselRef.current.parentElement.offsetWidth || 0);
+            carouselRef.current.parentElement.scrollLeft = scrollAmount;
+          }
         }
       }
     }, 5000); // Change slide every 5 seconds
@@ -80,7 +84,11 @@ const HeroAlt = ({
     if (carouselRef.current) {
       const items = carouselRef.current.querySelectorAll('.carousel-item');
       if (items.length > 0 && items[index]) {
-        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        // Use scrollLeft to avoid navigation
+        if (carouselRef.current.parentElement) {
+          const scrollAmount = index * (carouselRef.current.parentElement.offsetWidth || 0);
+          carouselRef.current.parentElement.scrollLeft = scrollAmount;
+        }
       }
     }
   };
@@ -138,18 +146,15 @@ const HeroAlt = ({
             </CarouselItem>
           </CarouselContent>
 
-          {/* Carousel Dots Navigation */}
+          {/* Carousel Dots Navigation - changed to horizontal dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {[0, 1, 2].map((index) => (
               <button 
                 key={index} 
                 onClick={() => handleDotClick(index)}
-                className={`flex flex-col items-center justify-center w-1 h-6 focus:outline-none ${activeSlide === index ? 'opacity-100' : 'opacity-50'}`}
+                className={`w-2 h-2 rounded-full ${activeSlide === index ? 'bg-fintaxy-blue' : 'bg-gray-300'} focus:outline-none`}
                 aria-label={`Go to slide ${index + 1}`}
               >
-                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full"></div>
-                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full my-0.5"></div>
-                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full"></div>
               </button>
             ))}
           </div>

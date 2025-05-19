@@ -28,7 +28,7 @@ const Navbar = () => {
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === "accounting") {
-      navigate("/");
+      navigate("/index");
     } else {
       navigate(`/${value}`);
     }
