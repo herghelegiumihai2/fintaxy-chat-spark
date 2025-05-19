@@ -103,6 +103,14 @@ const AboutUs = () => {
                         >
                           denis.bradu@fintaxy.com
                         </a>
+                        <a 
+                          href="mailto:denisbradu95@gmail.com" 
+                          className="text-fintaxy-blue hover:underline"
+                        >
+                          denisbradu95@gmail.com
+                        </a>
+
+
                       </div>
                     </div>
 
