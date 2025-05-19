@@ -210,9 +210,7 @@ const ModuleSection = () => {
                     </div>
 
                     {section.id === 2 && <div className="mt-6">
-                        <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" onClick={() => window.open('https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form', '_blank')}>
-                          Incepe
-                        </Button>
+                        
                       </div>}
                   </div>
                 </> : <>
