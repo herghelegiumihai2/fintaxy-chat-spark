@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -36,11 +35,28 @@ const Navbar = () => {
   };
 
   const scrollToContactSection = () => {
-    const contactSection = document.getElementById('contact-section');
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: 'smooth'
+    // First check if we need to navigate to a different page
+    const currentPath = location.pathname;
+    let targetPath = currentPath;
+    
+    if (currentPath.includes('about-us')) {
+      // If on About Us page, navigate to home page first
+      targetPath = '/';
+    }
+    
+    // If current path is different from target path, navigate and then scroll
+    if (currentPath !== targetPath) {
+      navigate(targetPath, { 
+        state: { scrollToContact: true } 
       });
+    } else {
+      // Otherwise just scroll to the section on the current page
+      const contactSection = document.getElementById('contact-section');
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
   };
 

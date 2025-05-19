@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeroAlt from '../components/HeroAlt';
@@ -11,6 +12,8 @@ import PricingSection from '../components/PricingSection';
 import FinalCTA from '../components/FinalCTA';
 
 const Business = () => {
+  const location = useLocation();
+
   useEffect(() => {
     document.title = "Fintaxy - Proprietari de afaceri";
     
@@ -54,12 +57,24 @@ const Business = () => {
     });
     
     observers.push(staggerObserver);
+
+    // Check if we need to scroll to contact section
+    if (location.state && location.state.scrollToContact) {
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact-section');
+        if (contactSection) {
+          contactSection.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }, 500); // Add a small delay to ensure the page has loaded
+    }
     
     // Cleanup function
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, []);
+  }, [location]);
   
   return (
     <div className="min-h-screen bg-white">

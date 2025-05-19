@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
@@ -9,6 +10,8 @@ import Footer from '../components/Footer';
 import SecuritySection from '../components/SecuritySection';
 
 const Index = () => {
+  const location = useLocation();
+
   useEffect(() => {
     // Initialize intersection observers for scroll animations
     const observers: IntersectionObserver[] = [];
@@ -50,12 +53,24 @@ const Index = () => {
     });
     
     observers.push(staggerObserver);
+
+    // Check if we need to scroll to contact section
+    if (location.state && location.state.scrollToContact) {
+      setTimeout(() => {
+        const contactSection = document.getElementById('about');
+        if (contactSection) {
+          contactSection.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }, 500); // Add a small delay to ensure the page has loaded
+    }
     
     // Cleanup function
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, []);
+  }, [location]);
   
   return (
     <div className="min-h-screen bg-white">

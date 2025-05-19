@@ -109,8 +109,8 @@ const HeroAlt = ({
             {/* Slide 1 */}
             <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Contabil și Aplicatie + Agent AI</span>
+                <div className="inline-block mb-6 w-auto">
+                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Contabil și Aplicatie + Agent AI</span>
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitatea și Afacerea gestionate cu Vocea</h1>
@@ -122,8 +122,8 @@ const HeroAlt = ({
             {/* Slide 2 */}
             <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Soluție completă AI</span>
+                <div className="inline-block mb-6 w-auto">
+                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Soluție completă AI</span>
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Tot ce ai nevoie pentru contabilitate - cu AI</h1>
@@ -135,8 +135,8 @@ const HeroAlt = ({
             {/* Slide 3 */}
             <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Start-up rapid</span>
+                <div className="inline-block mb-6 w-auto">
+                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Start-up rapid</span>
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Înființare Gratuită PFA, SRL</h1>
@@ -146,7 +146,7 @@ const HeroAlt = ({
             </CarouselItem>
           </CarouselContent>
 
-          {/* Carousel Dots Navigation - changed to horizontal dots */}
+          {/* Carousel Dots Navigation - horizontal dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {[0, 1, 2].map((index) => (
               <button 
