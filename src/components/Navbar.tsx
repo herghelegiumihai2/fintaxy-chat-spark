@@ -35,6 +35,15 @@ const Navbar = () => {
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
 
+  const scrollToContactSection = () => {
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-2", isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent")}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo on the left */}
@@ -61,14 +70,7 @@ const Navbar = () => {
 
         {/* CTA Button on the right */}
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-sm py-1.5 px-5 h-9" onClick={() => {
-          const aboutSection = document.getElementById('about');
-          if (aboutSection) {
-            aboutSection.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        }}>
+          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-sm py-1.5 px-5 h-9" onClick={scrollToContactSection}>
             Începe
           </Button>
         </div>
@@ -97,12 +99,7 @@ const Navbar = () => {
           
           <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-2 h-9 text-base" onClick={() => {
         setMobileMenuOpen(false);
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-          aboutSection.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+        scrollToContactSection();
       }}>
             Începe
           </Button>

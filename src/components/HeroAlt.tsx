@@ -1,14 +1,12 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit, FileSearch, BarChart3 } from "lucide-react";
 import FeatureCard from './FeatureCard';
 import { 
   Carousel, 
   CarouselContent, 
-  CarouselItem, 
-  CarouselPrevious, 
-  CarouselNext 
+  CarouselItem
 } from "@/components/ui/carousel";
 
 interface HeroAltProps {
@@ -19,10 +17,22 @@ const HeroAlt = ({
   userType
 }: HeroAltProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  
   const scrollToContactSection = () => {
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToPricingSection = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({
         behavior: 'smooth'
       });
     }
@@ -46,9 +56,14 @@ const HeroAlt = ({
 
     // Set up auto rotation for carousel
     const interval = setInterval(() => {
-      const nextButton = document.querySelector('.carousel-next-button') as HTMLButtonElement;
-      if (nextButton) {
-        nextButton.click();
+      setActiveSlide((prev) => (prev + 1) % 3);
+      
+      if (carouselRef.current) {
+        const items = carouselRef.current.querySelectorAll('.carousel-item');
+        if (items.length > 0) {
+          const nextIndex = (activeSlide + 1) % items.length;
+          items[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
       }
     }, 5000); // Change slide every 5 seconds
 
@@ -58,7 +73,17 @@ const HeroAlt = ({
       }
       clearInterval(interval);
     };
-  }, []);
+  }, [activeSlide]);
+
+  const handleDotClick = (index: number) => {
+    setActiveSlide(index);
+    if (carouselRef.current) {
+      const items = carouselRef.current.querySelectorAll('.carousel-item');
+      if (items.length > 0 && items[index]) {
+        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  };
 
   return (
     <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 relative overflow-hidden py-[10px]">
@@ -72,9 +97,9 @@ const HeroAlt = ({
       
       <div className="container mx-auto max-w-7xl py-0">
         <Carousel className="w-full mb-12 section-appear max-w-5xl mx-auto">
-          <CarouselContent>
+          <CarouselContent ref={carouselRef}>
             {/* Slide 1 */}
-            <CarouselItem>
+            <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
                 <div className="inline-block mb-6">
                   <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Contabil și Aplicatie + Agent AI</span>
@@ -87,7 +112,7 @@ const HeroAlt = ({
             </CarouselItem>
             
             {/* Slide 2 */}
-            <CarouselItem>
+            <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
                 <div className="inline-block mb-6">
                   <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Soluție completă AI</span>
@@ -100,7 +125,7 @@ const HeroAlt = ({
             </CarouselItem>
             
             {/* Slide 3 */}
-            <CarouselItem>
+            <CarouselItem className="carousel-item">
               <div className="flex flex-col items-center text-center">
                 <div className="inline-block mb-6">
                   <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">Start-up rapid</span>
@@ -112,14 +137,27 @@ const HeroAlt = ({
               </div>
             </CarouselItem>
           </CarouselContent>
-          
-          <CarouselPrevious className="hidden sm:flex -left-4 carousel-prev-button" />
-          <CarouselNext className="hidden sm:flex -right-4 carousel-next-button" />
+
+          {/* Carousel Dots Navigation */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {[0, 1, 2].map((index) => (
+              <button 
+                key={index} 
+                onClick={() => handleDotClick(index)}
+                className={`flex flex-col items-center justify-center w-1 h-6 focus:outline-none ${activeSlide === index ? 'opacity-100' : 'opacity-50'}`}
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full"></div>
+                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full my-0.5"></div>
+                <div className="w-1 h-1 mx-0.5 bg-fintaxy-blue rounded-full"></div>
+              </button>
+            ))}
+          </div>
         </Carousel>
         
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 section-appear py-0">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" size="lg" onClick={() => window.open('https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form', '_blank')}>
+            <Button className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" size="lg" onClick={scrollToPricingSection}>
               Începe Acum
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
