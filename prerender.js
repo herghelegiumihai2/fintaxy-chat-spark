@@ -9,7 +9,7 @@ const toAbsolute = (p) => path.resolve(__dirname, p)
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-// Define the actual routes from your App.tsx
+// Define routes that match App.tsx exactly
 const routesToPrerender = [
   '/',
   '/index',
@@ -27,26 +27,44 @@ const ensureDirectoryExists = (filePath) => {
   }
 }
 
+// Helper function to map routes to file paths
+const getFilePathForRoute = (route) => {
+  switch (route) {
+    case '/':
+      return 'dist/index.html'
+    case '/index':
+      return 'dist/index/index.html'
+    case '/accounting':
+      return 'dist/accounting/index.html'
+    case '/business':
+      return 'dist/business/index.html'
+    case '/freelancers':
+      return 'dist/freelancers/index.html'
+    case '/about-us':
+      return 'dist/about-us/index.html'
+    default:
+      // For any other routes, create a directory structure
+      const cleanPath = route.replace(/^\//, '').replace(/\/$/, '')
+      return `dist/${cleanPath}/index.html`
+  }
+}
+
 ;(async () => {
   for (const url of routesToPrerender) {
-    const appHtml = render(url);
-    const html = template.replace(`<!--app-html-->`, appHtml)
+    try {
+      const appHtml = render(url);
+      const html = template.replace(`<!--app-html-->`, appHtml)
 
-    // Map routes to proper file paths
-    let filePath
-    if (url === '/') {
-      filePath = 'dist/index.html'
-    } else if (url === '/about-us') {
-      filePath = 'dist/about-us.html'
-    } else {
-      // Remove leading slash and add .html extension
-      filePath = `dist${url}.html`
+      const filePath = getFilePathForRoute(url)
+      const absoluteFilePath = toAbsolute(filePath)
+      
+      // Ensure the directory exists before writing
+      ensureDirectoryExists(absoluteFilePath)
+      
+      fs.writeFileSync(absoluteFilePath, html)
+      console.log('pre-rendered:', filePath)
+    } catch (error) {
+      console.error(`Error pre-rendering ${url}:`, error)
     }
-
-    const absoluteFilePath = toAbsolute(filePath)
-    ensureDirectoryExists(absoluteFilePath)
-    
-    fs.writeFileSync(absoluteFilePath, html)
-    console.log('pre-rendered:', filePath)
   }
 })()
