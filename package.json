@@ -7,7 +7,11 @@
     "dev:frontend": "vite",
     "dev:server": "node api/server.js",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:server\"",
-    "build": "tsc && vite build",
+    "build": "npm run build:client && npm run build:server && npm run build:prerender",
+"build:client": "vite build",
+"build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+"build:prerender": "node prerender",
+
     "build:dev": "vite build --mode development",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
