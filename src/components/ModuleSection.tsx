@@ -98,6 +98,7 @@ const featureSections: FeatureSection[] = [{
   "/lovable-uploads/0df6a437-5b17-4dea-bf1f-fc4579e1829c.png" // Photo 6 at position 2
   ]
 }];
+
 const ModuleSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<Record<number, number>>({});
@@ -155,7 +156,8 @@ const ModuleSection = () => {
       observer.disconnect();
     };
   }, []);
-  return <section id="features" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50" ref={sectionRef}>
+  return (
+    <section id="features" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50" ref={sectionRef}>
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20 section-appear">
           <div className="inline-block mb-4">
@@ -168,15 +170,30 @@ const ModuleSection = () => {
         </div>
         
         <div className="space-y-32">
-          {featureSections.map((section, sectionIndex) => <div key={section.id} className={`feature-section grid md:grid-cols-2 gap-12 items-center`} style={{
-          transitionDelay: `${0.1 * sectionIndex}s`
-        }}>
+          {featureSections.map((section, sectionIndex) => (
+            <div key={section.id} className={`feature-section grid md:grid-cols-2 gap-12 items-center`} style={{
+              transitionDelay: `${0.1 * sectionIndex}s`
+            }}>
               {/* For even-indexed sections (0-based), content is on the right and image is on the left */}
-              {sectionIndex % 2 === 1 ? <>
+              {sectionIndex % 2 === 1 ? (
+                <>
                   {/* Left content - Image carousel for even sections */}
                   <div className="bg-white rounded-xl shadow-md overflow-hidden aspect-video relative">
-                    {section.images.map((image, imgIndex) => <img key={imgIndex} src={image} alt={`${section.title} illustration ${imgIndex + 1}`} className={`w-full h-full object-cover transition-opacity duration-500 absolute inset-0
-                          ${activeImageIndex[section.id] === imgIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+                    {section.images.map((image, imgIndex) => (
+                      <img 
+                        key={imgIndex} 
+                        src={image} 
+                        alt={`${section.title} - Screenshot ${imgIndex + 1} showing ${
+                          section.id === 1 ? 'financial dashboard and key indicators' :
+                          section.id === 2 ? 'AI voice assistant interface and chat functionality' :
+                          section.id === 3 ? 'invoice generation and payment processing' :
+                          section.id === 4 ? 'document processing and bank statement integration' :
+                          'application feature'
+                        }`}
+                        className={`w-full h-full object-cover transition-opacity duration-500 absolute inset-0
+                          ${activeImageIndex[section.id] === imgIndex ? 'opacity-100' : 'opacity-0'}`} 
+                      />
+                    ))}
                     
                     {/* Carousel indicators */}
                     {section.images.length > 1 && <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
@@ -213,7 +230,9 @@ const ModuleSection = () => {
                         
                       </div>}
                   </div>
-                </> : <>
+                </>
+              ) : (
+                <>
                   {/* Left content - Text for odd sections */}
                   <div className="space-y-8">
                     <h3 className="text-2xl md:text-3xl font-semibold text-fintaxy-navy">
@@ -245,8 +264,21 @@ const ModuleSection = () => {
                   
                   {/* Right content - Image carousel for odd sections */}
                   <div className="bg-white rounded-xl shadow-md overflow-hidden aspect-video relative">
-                    {section.images.map((image, imgIndex) => <img key={imgIndex} src={image} alt={`${section.title} illustration ${imgIndex + 1}`} className={`w-full h-full object-cover transition-opacity duration-500 absolute inset-0
-                          ${activeImageIndex[section.id] === imgIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+                    {section.images.map((image, imgIndex) => (
+                      <img 
+                        key={imgIndex} 
+                        src={image} 
+                        alt={`${section.title} - Screenshot ${imgIndex + 1} showing ${
+                          section.id === 1 ? 'real-time financial information dashboard with charts and analytics' :
+                          section.id === 2 ? 'AI voice-driven assistant interface with chat and voice commands' :
+                          section.id === 3 ? 'AI-powered invoice generation with automation features and online payments' :
+                          section.id === 4 ? 'document processing system with receipt scanning and email integration' :
+                          'application feature demonstration'
+                        }`}
+                        className={`w-full h-full object-cover transition-opacity duration-500 absolute inset-0
+                          ${activeImageIndex[section.id] === imgIndex ? 'opacity-100' : 'opacity-0'}`} 
+                      />
+                    ))}
                     
                     {/* Carousel indicators */}
                     {section.images.length > 1 && <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
@@ -256,10 +288,14 @@ const ModuleSection = () => {
                 }))} />)}
                       </div>}
                   </div>
-                </>}
-            </div>)}
+                </>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ModuleSection;

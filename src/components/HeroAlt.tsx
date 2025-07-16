@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BrainCircuit, FileSearch, BarChart3 } from "lucide-react";
