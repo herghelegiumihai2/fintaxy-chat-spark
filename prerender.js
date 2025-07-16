@@ -19,13 +19,34 @@ const routesToPrerender = [
   '/about-us'
 ]
 
+// Helper function to ensure directory exists
+const ensureDirectoryExists = (filePath) => {
+  const dir = path.dirname(filePath)
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true })
+  }
+}
+
 ;(async () => {
   for (const url of routesToPrerender) {
     const appHtml = render(url);
     const html = template.replace(`<!--app-html-->`, appHtml)
 
-    const filePath = `dist${url === '/' ? '/index' : url}.html`
-    fs.writeFileSync(toAbsolute(filePath), html)
+    // Map routes to proper file paths
+    let filePath
+    if (url === '/') {
+      filePath = 'dist/index.html'
+    } else if (url === '/about-us') {
+      filePath = 'dist/about-us.html'
+    } else {
+      // Remove leading slash and add .html extension
+      filePath = `dist${url}.html`
+    }
+
+    const absoluteFilePath = toAbsolute(filePath)
+    ensureDirectoryExists(absoluteFilePath)
+    
+    fs.writeFileSync(absoluteFilePath, html)
     console.log('pre-rendered:', filePath)
   }
 })()
