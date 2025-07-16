@@ -9,12 +9,15 @@ const toAbsolute = (p) => path.resolve(__dirname, p)
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-const routesToPrerender = fs
-  .readdirSync(toAbsolute('src/pages'))
-  .map((file) => {
-    const name = file.replace(/\.tsx$/, '').toLowerCase()
-    return name === 'index' ? `/` : `/${name}`
-  })
+// Define the actual routes from your App.tsx
+const routesToPrerender = [
+  '/',
+  '/index',
+  '/accounting',
+  '/business',
+  '/freelancers',
+  '/about-us'
+]
 
 ;(async () => {
   for (const url of routesToPrerender) {
