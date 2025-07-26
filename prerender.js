@@ -11,9 +11,8 @@ const { render } = await import('./dist/server/entry-server.js')
 
 // Define the actual routes from your App.tsx
 const routesToPrerender = [
-  '/',
-  '/accounting',
   '/business',
+  '/accounting', 
   '/freelancers',
   '/about-us'
 ]
@@ -33,7 +32,7 @@ const ensureDirectoryExists = (filePath) => {
 
     // Map routes to proper file paths
     let filePath
-    if (url === '/') {
+    if (url === '/business') {
       filePath = 'dist/index.html'
     } else if (url === '/about-us') {
       filePath = 'dist/about-us.html'
