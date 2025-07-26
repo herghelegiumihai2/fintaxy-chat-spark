@@ -29,7 +29,9 @@ const ensureDirectoryExists = (filePath) => {
 
 ;(async () => {
   for (const url of routesToPrerender) {
-    const appHtml = render(url);
+    // Handle redirect: since '/' redirects to '/business', render '/business' content for '/'
+    const renderUrl = url === '/' ? '/business' : url;
+    const appHtml = render(renderUrl);
     const html = template.replace(`<!--app-html-->`, appHtml)
 
     // Map routes to proper file paths
