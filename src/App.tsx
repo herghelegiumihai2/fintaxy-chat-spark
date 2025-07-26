@@ -18,7 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Routes>
-        <Route path="/" element={<Navigate to="/business" replace />} />
+        <Route path="/" element={<Business />} />
         <Route path="/accounting" element={<Accounting />} />
         <Route path="/business" element={<Business />} />
         <Route path="/freelancers" element={<Freelancers />} />
