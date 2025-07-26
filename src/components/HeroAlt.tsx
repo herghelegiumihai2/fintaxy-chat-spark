@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 
 interface HeroAltProps {
-  userType: 'business' | 'freelancer';
+  userType: 'business' | 'freelancer' | 'accounting';
 }
 
 const HeroAlt = ({

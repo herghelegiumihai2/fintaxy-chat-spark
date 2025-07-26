@@ -1,18 +1,21 @@
-
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Features from '../components/Features';
-import Testimonials from '../components/Testimonials';
-import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
+import HeroAlt from '../components/HeroAlt';
+import ModuleSection from '../components/ModuleSection';
 import SecuritySection from '../components/SecuritySection';
+import Testimonials from '../components/Testimonials';
+import FAQSection from '../components/FAQSection';
+import PricingSection from '../components/PricingSection';
+import FinalCTA from '../components/FinalCTA';
 
-const Index = () => {
+const Accounting = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Fintaxy - Contabili";
+    
     // Initialize intersection observers for scroll animations
     const observers: IntersectionObserver[] = [];
     
@@ -57,13 +60,13 @@ const Index = () => {
     // Check if we need to scroll to contact section
     if (location.state && location.state.scrollToContact) {
       setTimeout(() => {
-        const contactSection = document.getElementById('about');
+        const contactSection = document.getElementById('contact-section');
         if (contactSection) {
           contactSection.scrollIntoView({
             behavior: 'smooth'
           });
         }
-      }, 500); // Add a small delay to ensure the page has loaded
+      }, 500);
     }
     
     // Cleanup function
@@ -75,14 +78,19 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <Hero />
-      <Features />
-      <Testimonials />
+      <HeroAlt userType="accounting" />
+      
+      <ModuleSection />
       <SecuritySection />
-      <CallToAction />
+      <div id="despre-noi">
+        <Testimonials />
+      </div>
+      <PricingSection />
+      <FAQSection />
+      <FinalCTA />
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Accounting;
