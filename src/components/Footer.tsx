@@ -22,19 +22,19 @@ const Footer = () => {
               <li>
                 <a href="#features" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
                   <ChevronRight className="w-3 h-3 mr-1" />
-                  Funcționalități
+                  Funționalități
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
+                <a href="#pricing" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
                   <ChevronRight className="w-3 h-3 mr-1" />
-                  Testimoniale
+                  Prețuri
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
+                <a href="/contacts" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
                   <ChevronRight className="w-3 h-3 mr-1" />
-                  Despre noi
+                  Contacte
                 </a>
               </li>
             </ul>

@@ -93,7 +93,7 @@ const Testimonials = () => {
         >
           <div className="inline-block mb-4">
             <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full">
-              Testimoniale
+              Ce spun clienții
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-3xl mx-auto mb-6">

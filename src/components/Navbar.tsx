@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate, useLocation } from "react-router-dom";
+import ApplicationModal from "./ApplicationModal";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname === "/" ? "accounting" : location.pathname.substring(1));
@@ -26,10 +28,20 @@ const Navbar = () => {
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
-    if (value === "accounting") {
-      navigate("/accounting");
-    } else {
-      navigate(`/${value}`);
+    if (value === "functionalitati") {
+      // Scroll to features section
+      const featuresSection = document.getElementById('features');
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (value === "preturi") {
+      // Scroll to pricing section
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (value === "contacte") {
+      navigate("/contacts");
     }
     if (mobileMenuOpen) setMobileMenuOpen(false);
   };
@@ -71,14 +83,14 @@ const Navbar = () => {
         <div className="hidden md:block max-w-xl mx-auto h-full">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full h-full">
             <TabsList className="w-full h-full grid grid-cols-3 gap-1 p-1.5 flex items-center bg-gray-50/70">
-              <TabsTrigger value="business" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
-                Proprietari de afaceri
+              <TabsTrigger value="functionalitati" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+                Funționalități
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
-                Freelanceri
+              <TabsTrigger value="preturi" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+                Prețuri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
-                Firmă de contabilitate
+              <TabsTrigger value="contacte" className="text-sm h-[112%] px-4 py-2.5 rounded-md transition-all hover:bg-fintaxy-light whitespace-nowrap">
+                Contacte
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -86,8 +98,8 @@ const Navbar = () => {
 
         {/* CTA Button on the right */}
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-sm py-1.5 px-5 h-9" onClick={scrollToContactSection}>
-            Începe
+          <Button className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white text-sm py-1.5 px-5 h-9" onClick={() => setModalOpen(true)}>
+            Aplicație
           </Button>
         </div>
 
@@ -101,25 +113,27 @@ const Navbar = () => {
       {mobileMenuOpen && <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg p-4 animate-fade-in">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mb-3">
             <TabsList className="w-full grid grid-cols-1 gap-2">
-              <TabsTrigger value="business" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
-                Proprietari de afaceri
+              <TabsTrigger value="functionalitati" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+                Funționalități
               </TabsTrigger>
-              <TabsTrigger value="freelancers" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
-                Freelanceri
+              <TabsTrigger value="preturi" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+                Prețuri
               </TabsTrigger>
-              <TabsTrigger value="accounting" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
-                Firmă de contabilitate
+              <TabsTrigger value="contacte" className="text-base w-full py-3 rounded-md transition-all hover:bg-fintaxy-light">
+                Contacte
               </TabsTrigger>
             </TabsList>
           </Tabs>
           
           <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-2 h-9 text-base" onClick={() => {
         setMobileMenuOpen(false);
-        scrollToContactSection();
+        setModalOpen(true);
       }}>
-            Începe
+            Aplicație
           </Button>
         </div>}
+      
+      <ApplicationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </header>;
 };
 
