@@ -18,11 +18,17 @@ const FinalCTA = () => {
             </p>
             
             <div className="space-y-4">
-              <Button className="w-full sm:w-auto bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" onClick={() => window.open('https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form', '_blank')}>
-                Începe
+              <Button 
+                className="w-full sm:w-auto bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" 
+                onClick={() => {
+                  const event = new CustomEvent('openApplicationModal');
+                  window.dispatchEvent(event);
+                }}
+              >
+                Try for free now
               </Button>
               
-              <Button className="w-full sm:w-auto border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light ml-0 sm:ml-4 mt-4 sm:mt-0" variant="outline" onClick={() => window.open('https://calendly.com/denis-bradu/denis-bradu-clone?month=2024-12', '_blank')}>
+              <Button className="w-full sm:w-auto border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light ml-0 sm:ml-4 mt-4 sm:mt-0" variant="outline" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
                 Programează o consultație
               </Button>
             </div>

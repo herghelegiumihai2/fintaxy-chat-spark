@@ -90,23 +90,6 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onClose }) 
           </p>
         </DialogHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <Button
-            onClick={openConsultationForm}
-            variant="outline"
-            className="bg-white border-fintaxy-blue text-fintaxy-blue hover:bg-fintaxy-light"
-          >
-            Consultație Contabilă
-          </Button>
-          <Button
-            className="bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white"
-            form="waitlist-form"
-            type="submit"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Se înscrie...' : 'Adaugă-mă pe listă'}
-          </Button>
-        </div>
 
         <form id="waitlist-form" onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -188,6 +171,17 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onClose }) 
               className="w-full resize-none"
               placeholder="Spune-ne despre business-ul tău și cum te putem ajuta..."
             />
+          </div>
+          
+          <div className="mt-6">
+            <Button
+              className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white"
+              form="waitlist-form"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Se înscrie...' : 'Adaugă-mă pe listă'}
+            </Button>
           </div>
         </form>
       </DialogContent>

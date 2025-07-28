@@ -104,70 +104,36 @@ const HeroAlt = ({
       }}></div>
       
       <div className="container mx-auto max-w-7xl py-0">
-        <Carousel className="w-full mb-12 section-appear max-w-5xl mx-auto">
-          <CarouselContent ref={carouselRef}>
-            {/* Slide 1 */}
-            <CarouselItem className="carousel-item">
-              <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6 w-auto">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Contabil și Aplicatie + Agent AI</span>
-                </div>
-                
-                <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitatea și Afacerea gestionate cu Vocea</h1>
-                
-                <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Spui ce vrei, Fintaxy execută. Contabilitate, facturi și gestiune – toate cu vocea.</p>
-              </div>
-            </CarouselItem>
-            
-            {/* Slide 2 */}
-            <CarouselItem className="carousel-item">
-              <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6 w-auto">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Soluție completă AI</span>
-                </div>
-                
-                <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Tot ce ai nevoie pentru contabilitate - cu AI</h1>
-                
-                <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Experiență revoluționară de gestionare a firmei și contabilității, combinând puterea AI-ului cu sprijinul unui expert contabil.</p>
-              </div>
-            </CarouselItem>
-            
-            {/* Slide 3 */}
-            <CarouselItem className="carousel-item">
-              <div className="flex flex-col items-center text-center">
-                <div className="inline-block mb-6 w-auto">
-                  <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Start-up rapid</span>
-                </div>
-                
-                <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Înființare Gratuită PFA, SRL</h1>
-                
-                <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Înființare gratuită plus tot ce este nevoie pentru administrarea afacerii: facturare, contabilitate și depunerea declarațiilor.</p>
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-
-          {/* Carousel Dots Navigation - horizontal dots */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {[0, 1, 2].map((index) => (
-              <button 
-                key={index} 
-                onClick={() => handleDotClick(index)}
-                className={`w-2 h-2 rounded-full ${activeSlide === index ? 'bg-fintaxy-blue' : 'bg-gray-300'} focus:outline-none`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-              </button>
-            ))}
+        <div className="flex flex-col items-center text-center mb-12 section-appear max-w-5xl mx-auto">
+          <div className="inline-block mb-6 w-auto">
+            <span className="px-4 py-2 bg-fintaxy-light text-fintaxy-navy text-sm font-medium rounded-full whitespace-nowrap">Contabil și Aplicație + Agent AI</span>
           </div>
-        </Carousel>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-[55px] font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mb-6">Contabilitate și AI pentru companiile Române.</h1>
+          
+          <p className="text-fintaxy-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.</p>
+        </div>
         
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 section-appear py-0">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" size="lg" onClick={scrollToPricingSection}>
-              Începe Acum
+            <Button 
+              className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white cta-button group" 
+              size="lg" 
+              onClick={() => {
+                const event = new CustomEvent('openApplicationModal');
+                window.dispatchEvent(event);
+              }}
+            >
+              Începe Gratuit
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors" variant="outline" size="lg" onClick={scrollToContactSection}>
-              Vreau să fiu sunat
+            <Button 
+              className="w-full sm:w-auto px-8 py-6 bg-transparent border border-fintaxy-navy/20 text-fintaxy-navy hover:bg-fintaxy-light transition-colors" 
+              variant="outline" 
+              size="lg" 
+              onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}
+            >
+              Programează Consultare
             </Button>
           </div>
           

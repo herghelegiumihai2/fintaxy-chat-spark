@@ -5,24 +5,24 @@ import { Star } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    quote: "Fintaxy a transformat complet departamentul nostru financiar. Economisim peste 20 de ore pe săptămână cu procesarea documentelor și reconcilierea automată.",
-    name: "Alexandru Popescu",
-    role: "CFO, TechSolutions SRL",
+    quote: "Primesc facturi intracomunitare în toate formatele posibile. Contabilul îmi cerea bani în plus pentru procesarea lor manuală. Cu Fintaxy nu mai depind de nimeni. AI-ul citește automat orice format – PDF, email, etc. – și extrage corect datele. Totul ajunge direct în contabilitate, fără bătăi de cap.",
+    name: "Radu-Corneliu Marin",
+    role: "Co-founder, Timeworx.io",
     rating: 5
   },
   {
     id: 2,
-    quote: "Ca firmă mică de contabilitate, Fintaxy ne-a permis să ne extindem fără a angaja personal suplimentar. Agenții AI preiau munca repetitivă, iar noi ne putem concentra pe consilierea clienților.",
-    name: "Maria Ionescu",
-    role: "Fondator, Contabilitate Modernă",
+    quote: "Emiterea facturilor în e-Factura și reconcilierea cu încasările era o bătaie de cap. Avem multe vânzări și manual nu mai funcționa. Cu Fintaxy, totul e automat: factura se generează, se semnează digital și se trimite direct în SPV. Primesc încasările și pot trimite reminders printr-un prompt dacă ceva întârzie. Economisim timp și nervi. Zero erori.",
+    name: "Daniel Trohin",
+    role: "Co-Founder & CEO, Renter",
     rating: 5
   },
   {
     id: 3,
-    quote: "Am fost sceptic inițial despre implementarea unei soluții AI, dar Fintaxy m-a surprins prin acuratețea și eficiența sa. Integrarea cu sistemele noastre existente a fost impecabilă.",
-    name: "Radu Stanciu",
-    role: "Director Financiar, Construct Plus",
-    rating: 4
+    quote: "Fintaxy m-a scăpat de haosul conturilor și platformelor multiple. Am centralizat toate încasările din Shopify, Stripe, PayPal și conturi bancare într-un singur loc. Economisesc peste o oră pe săptămână doar din logatul și extragerea datelor. Acum am control complet și vizibilitate în timp real asupra banilor.",
+    name: "Valeriu Guțan",
+    role: "Fondator, BananaShop",
+    rating: 5
   }
 ];
 

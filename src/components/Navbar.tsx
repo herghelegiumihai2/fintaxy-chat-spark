@@ -23,7 +23,16 @@ const Navbar = () => {
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    const handleOpenModal = () => {
+      setModalOpen(true);
+    };
+    window.addEventListener('openApplicationModal', handleOpenModal);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('openApplicationModal', handleOpenModal);
+    };
   }, []);
 
   const handleTabChange = (value: string) => {
