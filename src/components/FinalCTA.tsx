@@ -3,69 +3,57 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
-  return <section id="contact-section" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left side - Text (was right side before) */}
-          <div className="flex flex-col items-start self-start">
-            <h2 className="text-3xl md:text-4xl font-semibold text-fintaxy-navy mb-6">Fă-ți viața mai ușoară cu Fintaxy</h2>
+  return (
+    <section id="contact-section" className="py-20 px-6">
+      <div className="container mx-auto max-w-4xl">
+        <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
+          {/* Background overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-500/90 via-purple-500/90 to-blue-500/90 rounded-3xl"></div>
+          
+          {/* Content */}
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+              Accounting doesn't have to be understood.<br />
+              Delegate it to Fintaxy
+            </h2>
             
-            <p className="text-fintaxy-muted leading-relaxed mb-10 text-lg">
-              Creat împreună cu experți contabili și specialiști în AI, special pentru freelanceri și afaceri mici 
-              care vor să economisească timp, bani și stres. Automatizează facturile, rapoartele și documentele fără 
-              să mai depinzi de softuri complicate sau procese manuale. <strong>Totul e simplu, rapid și la îndemână – 
-              chiar și prin voce.</strong>
-            </p>
-            
-            <div className="space-y-4">
+            <div className="mb-8">
               <Button 
-                className="w-full sm:w-auto bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" 
+                size="lg"
+                className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300"
                 onClick={() => {
                   const event = new CustomEvent('openApplicationModal');
                   window.dispatchEvent(event);
                 }}
               >
-                Try for free now
-              </Button>
-              
-              <Button className="w-full sm:w-auto border border-fintaxy-navy/20 bg-white text-fintaxy-navy hover:bg-fintaxy-light ml-0 sm:ml-4 mt-4 sm:mt-0" variant="outline" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
-                Programează o consultație
+                Începe Gratuit
               </Button>
             </div>
-          </div>
-          
-          {/* Call to Action Info */}
-          <div className="bg-gradient-to-br from-fintaxy-blue to-blue-600 rounded-2xl p-8 text-white">
-            <h2 className="text-2xl font-semibold mb-6">
-              Gata să automatizezi contabilitatea?
-            </h2>
-            <p className="text-blue-100 mb-8 text-lg leading-relaxed">
-              Alătură-te comunității de antreprenori care și-au simplificat procesele financiare cu Fintaxy. Începe astăzi și vezi diferența!
-            </p>
             
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>Implementare rapidă în 24-48h</span>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-white/90">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Fără Card</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>Suport tehnic dedicat</span>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Transfer Simplu</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>Garanție de satisfacție 100%</span>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Salvează timp și bani</span>
               </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/20">
-              <p className="text-sm text-blue-200">
-                💡 <strong>Bonus:</strong> Primii 100 de utilizatori primesc 3 luni gratuite!
-              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default FinalCTA;
