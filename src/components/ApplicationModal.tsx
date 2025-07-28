@@ -79,8 +79,8 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
     window.open('https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form', '_blank');
   };
   return <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="py-[10px]">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto py-[20px]">
+        <DialogHeader className="py-0">
           <DialogTitle className="text-2xl font-semibold text-fintaxy-navy text-center mb-2">
             Adaugă-mă pe lista de așteptare
           </DialogTitle>
