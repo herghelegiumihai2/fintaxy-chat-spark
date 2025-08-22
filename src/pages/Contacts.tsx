@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from 'lucide-react';
-
 const Contacts = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,33 +15,34 @@ const Contacts = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
-
       if (response.ok) {
         toast({
           title: "Mesaj trimis cu succes!",
-          description: "Vă vom contacta în cel mai scurt timp posibil.",
+          description: "Vă vom contacta în cel mai scurt timp posibil."
         });
         setFormData({
           name: '',
@@ -59,20 +59,18 @@ const Contacts = () => {
       toast({
         title: "Eroare la trimiterea mesajului",
         description: "Vă rugăm să încercați din nou sau să ne contactați direct.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Navbar />
       
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-20 px-6 py-[150px]">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 py-[20px]">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-[-0.04em] text-fintaxy-navy max-w-4xl mx-auto mb-6">
               Contactează-ne
             </h1>
@@ -158,31 +156,14 @@ const Contacts = () => {
                     <label htmlFor="name" className="block text-sm font-medium text-fintaxy-navy mb-2">
                       Nume complet *
                     </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full"
-                      placeholder="Nume și prenume"
-                    />
+                    <Input id="name" name="name" type="text" value={formData.name} onChange={handleInputChange} required className="w-full" placeholder="Nume și prenume" />
                   </div>
                   
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-fintaxy-navy mb-2">
                       Compania
                     </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full"
-                      placeholder="Numele companiei"
-                    />
+                    <Input id="company" name="company" type="text" value={formData.company} onChange={handleInputChange} className="w-full" placeholder="Numele companiei" />
                   </div>
                 </div>
                 
@@ -191,31 +172,14 @@ const Contacts = () => {
                     <label htmlFor="email" className="block text-sm font-medium text-fintaxy-navy mb-2">
                       Email *
                     </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full"
-                      placeholder="adresa@email.com"
-                    />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} required className="w-full" placeholder="adresa@email.com" />
                   </div>
                   
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-fintaxy-navy mb-2">
                       Telefon
                     </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full"
-                      placeholder="+40 XXX XXX XXX"
-                    />
+                    <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} className="w-full" placeholder="+40 XXX XXX XXX" />
                   </div>
                 </div>
                 
@@ -223,23 +187,10 @@ const Contacts = () => {
                   <label htmlFor="message" className="block text-sm font-medium text-fintaxy-navy mb-2">
                     Mesaj *
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={5}
-                    className="w-full resize-none"
-                    placeholder="Descrie-ne cum te putem ajuta..."
-                  />
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows={5} className="w-full resize-none" placeholder="Descrie-ne cum te putem ajuta..." />
                 </div>
                 
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-3 text-lg"
-                >
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-3 text-lg">
                   {isSubmitting ? 'Se trimite...' : 'Trimite mesajul'}
                 </Button>
               </form>
@@ -249,8 +200,6 @@ const Contacts = () => {
       </section>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contacts;
