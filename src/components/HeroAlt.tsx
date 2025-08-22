@@ -87,7 +87,7 @@ const HeroAlt = ({
       
       <div className="container mx-auto max-w-7xl">
         {/* Full Width Card */}
-        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg shadow-gray-900/5 border border-gray-100">
+        <div className="bg-white rounded-2xl pl-20 pr-20 pt-4 pb-4 md:p-12 shadow-lg shadow-gray-900/5 border border-gray-100">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Content */}
             <div>
