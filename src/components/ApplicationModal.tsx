@@ -131,7 +131,7 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
           </div>
           
           <div className="mt-6">
-            <Button className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white" form="waitlist-form" type="submit" disabled={isSubmitting}>
+            <Button form="waitlist-form" type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-fintaxy-blue to-blue-600 hover:from-blue-600 hover:to-fintaxy-blue text-white py-0 my-[20px]">
               {isSubmitting ? 'Se înscrie...' : 'Adaugă-mă pe listă'}
             </Button>
           </div>
