@@ -85,12 +85,30 @@ const HeroAlt = ({
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/20 blur-[80px]"></div>
       <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]"></div>
       
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-screen-xl">
         {/* Full Width Card */}
-        <div className="bg-white rounded-2xl pl-20 pr-20 pt-4 pb-4 md:p-12 shadow-lg shadow-gray-900/5 border border-gray-100">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div
+          className="
+            bg-white rounded-2xl
+            w-full mx-auto
+            max-w-[92vw] 2xl:max-w-[1800px]
+            px-6 md:px-10 lg:px-14 xl:px-20
+            py-10 lg:py-14
+            shadow-lg shadow-gray-900/5 border border-gray-100
+          "
+        >
+          <div
+            className="
+              grid items-center
+              grid-cols-1 lg:grid-cols-[1.25fr_0.75fr]
+              gap-8 md:gap-10 lg:gap-12 xl:gap-16
+            "
+          >
             {/* Left Side - Content */}
-            <div>
+              <div className="
+                pr-0 lg:pr-8 xl:pr-12
+                max-w-[760px]
+              ">
               {/* Badge/Chip */}
               <div className="inline-block mb-6">
                 <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
@@ -139,7 +157,11 @@ const HeroAlt = ({
                 <img 
                   src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png" 
                   alt="Business professional managing documents and invoices - Fintaxy automation" 
-                  className="w-full max-w-md h-auto object-contain"
+                  className="
+                    w-full h-auto object-contain
+                    max-w-[540px] md:max-w-[600px] lg:max-w-[680px] xl:max-w-[740px]
+                    justify-self-center lg:justify-self-end
+                  "
                 />
               </div>
             </div>
