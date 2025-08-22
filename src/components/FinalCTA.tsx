@@ -1,25 +1,32 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
+
 const FinalCTA = () => {
-  return <section id="contact-section" className="px-6 my-0 py-[150px]">
+  return (
+    <section id="contact-section" className="py-20 px-6">
       <div className="container mx-auto max-w-screen-xl">
         <div className="w-full mx-auto max-w-[92vw] 2xl:max-w-[1800px]">
-        <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
           {/* Background overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-500/90 via-purple-500/90 to-blue-500/90 rounded-3xl py-0"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 via-blue-700/90 to-blue-800/90 rounded-3xl"></div>
           
           {/* Content */}
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-              Accounting doesn't have to be understood.<br />
-              Delegate it to Fintaxy
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+              <div className="mb-4">Nu te-ai născut pentru facturi.</div>
+              <div className="mb-8">De-aia există Fintaxy !</div>
             </h2>
             
             <div className="mb-8">
-              <Button size="lg" className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300" onClick={() => {
-                const event = new CustomEvent('openApplicationModal');
-                window.dispatchEvent(event);
-              }}>
+              <Button 
+                size="lg"
+                className="bg-white border-2 border-white/30 text-gray-800 hover:bg-gray-50 hover:border-white/50 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
+                onClick={() => {
+                  const event = new CustomEvent('openApplicationModal');
+                  window.dispatchEvent(event);
+                }}
+              >
                 Începe Gratuit
               </Button>
             </div>
@@ -48,6 +55,7 @@ const FinalCTA = () => {
         </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default FinalCTA;
