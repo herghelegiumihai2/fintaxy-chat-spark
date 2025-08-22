@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageLightboxProps {
@@ -12,18 +12,52 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastActiveElement = useRef<HTMLElement | null>(null);
 
   // Update current index when initialIndex changes
   useEffect(() => {
     setCurrentIndex(initialIndex);
+    setIsImageLoading(true);
   }, [initialIndex]);
 
-  // Prevent background scroll when modal is open
+  // Preload adjacent images for smoother navigation
+  useEffect(() => {
+    if (isOpen && images.length > 1) {
+      const preloadImage = (src: string) => {
+        const img = new Image();
+        img.src = src;
+      };
+
+      // Preload previous and next images
+      const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+      const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+      
+      if (images[prevIndex]) preloadImage(images[prevIndex]);
+      if (images[nextIndex]) preloadImage(images[nextIndex]);
+    }
+  }, [isOpen, currentIndex, images]);
+
+  // Prevent background scroll when modal is open and manage focus
   useEffect(() => {
     if (isOpen) {
+      // Store the currently focused element
+      lastActiveElement.current = document.activeElement as HTMLElement;
+      
       document.body.style.overflow = 'hidden';
+      
+      // Focus the close button after a brief delay to ensure rendering
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
     } else {
       document.body.style.overflow = 'unset';
+      
+      // Return focus to the last active element (the clicked thumbnail)
+      if (lastActiveElement.current) {
+        lastActiveElement.current.focus();
+      }
     }
 
     return () => {
@@ -32,10 +66,12 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
   }, [isOpen]);
 
   const goToPrevious = useCallback(() => {
+    setIsImageLoading(true);
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }, [images.length]);
 
   const goToNext = useCallback(() => {
+    setIsImageLoading(true);
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
 
@@ -80,11 +116,15 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
-    if (isLeftSwipe) {
+    if (isLeftSwipe && images.length > 1) {
       goToNext();
-    } else if (isRightSwipe) {
+    } else if (isRightSwipe && images.length > 1) {
       goToPrevious();
     }
+    
+    // Reset touch states
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   if (!isOpen) return null;
@@ -103,8 +143,9 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
     >
       {/* Close button */}
       <button
+        ref={closeButtonRef}
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+        className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/20"
         aria-label="Închide preview"
       >
         <X className="w-6 h-6" />
@@ -114,10 +155,10 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
       {images.length > 1 && (
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/20"
           aria-label="Imaginea anterioară"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-8 h-8" />
         </button>
       )}
 
@@ -125,10 +166,10 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
       {images.length > 1 && (
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/20"
           aria-label="Imaginea următoare"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-8 h-8" />
         </button>
       )}
 
@@ -146,11 +187,19 @@ const ImageLightbox = ({ images, initialIndex, isOpen, onClose }: ImageLightboxP
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
+        {isImageLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+          </div>
+        )}
         <img
           src={images[currentIndex]}
           alt={`Preview ${currentIndex + 1}`}
-          className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-          loading="lazy"
+          className={`max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-opacity duration-200 ${
+            isImageLoading ? 'opacity-0' : 'opacity-100'
+          }`}
+          onLoad={() => setIsImageLoading(false)}
+          onError={() => setIsImageLoading(false)}
         />
       </div>
     </div>

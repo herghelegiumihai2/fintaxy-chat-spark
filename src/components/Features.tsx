@@ -93,14 +93,15 @@ const Features = () => {
               Extrage automat informații relevante din facturi, chitanțe și alte documente financiare cu precizie ridicată.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(0)}
               aria-label="Preview imagine procesare documente"
             >
               <img 
                 src={featureImages[0]} 
                 alt="Procesare documente" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
@@ -125,14 +126,15 @@ const Features = () => {
               Realizează automat potrivirea tranzacțiilor și reconcilierea banilor între diverse conturi și sisteme.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(1)}
               aria-label="Preview imagine reconciliere automată"
             >
               <img 
                 src={featureImages[1]} 
                 alt="Reconciliere automată" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
@@ -157,14 +159,15 @@ const Features = () => {
               Generează rapoarte personalizate și analize financiare bazate pe datele disponibile în sistem.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(2)}
               aria-label="Preview imagine rapoarte analitice"
             >
               <img 
                 src={featureImages[2]} 
                 alt="Rapoarte analitice" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
@@ -189,14 +192,15 @@ const Features = () => {
               Comunici prin voce, primești răspunsuri instant.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(3)}
               aria-label="Preview imagine asistent AI"
             >
               <img 
                 src={featureImages[3]} 
                 alt="Asistent AI Voice-Driven" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
@@ -221,14 +225,15 @@ const Features = () => {
               Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(4)}
               aria-label="Preview imagine expert contabil"
             >
               <img 
                 src={featureImages[4]} 
                 alt="Expert Contabil" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
@@ -253,14 +258,15 @@ const Features = () => {
               Accesează situația financiară și indicatorii cheie in afacere - oricând.
             </p>
             <div 
-              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              className="group relative overflow-hidden rounded-xl cursor-pointer mb-4 aspect-[4/3] hover:shadow-xl hover:shadow-gray-900/10 transition-shadow duration-300"
               onClick={() => openLightbox(5)}
               aria-label="Preview imagine informații în timp real"
             >
               <img 
                 src={featureImages[5]} 
                 alt="Informații în Timp Real" 
-                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
             <ul className="space-y-2">
