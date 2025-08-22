@@ -105,40 +105,43 @@ const HeroAlt = ({
                 max-w-[760px]
               ">
               {/* Badge/Chip */}
-              <div className="inline-block mb-6">
+              <div className="inline-block mb-8">
                 <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
                   Contabil, Aplicație + AI
                 </span>
               </div>
               
               {/* Main Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">Contabilitate + AI
-Pentru Companiile Române.</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                <span className="text-blue-600">Contabilitate + AI</span>
+                <br />
+                <span className="text-gray-900">Pentru companiile Române.</span>
+              </h1>
               
               {/* Subtitle */}
-              <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg md:text-xl mb-12 leading-relaxed">
                 Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.
               </p>
               
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex flex-col items-start">
-                  <Button className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" size="lg" onClick={() => {
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                <Button className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" size="lg" onClick={() => {
                   const event = new CustomEvent('openApplicationModal');
                   window.dispatchEvent(event);
                 }}>
-                    Începe Gratuit
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                  
-                  {/* Subtitle under button */}
-                  
-                </div>
+                  Începe Gratuit
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
                 
                 <Button className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" variant="outline" size="lg" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
                   Programează Consultare
                 </Button>
               </div>
+              
+              {/* Subtitle under buttons */}
+              <p className="text-sm text-gray-500 text-left">
+                Începe complet gratuit. Fără card bancar.
+              </p>
             </div>
             
             {/* Right Side - Image */}

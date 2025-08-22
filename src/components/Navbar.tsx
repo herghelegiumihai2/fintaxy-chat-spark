@@ -38,16 +38,24 @@ const Navbar = () => {
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value === "functionalitati") {
-      // Scroll to features section
-      const featuresSection = document.getElementById('features');
-      if (featuresSection) {
-        featuresSection.scrollIntoView({ behavior: 'smooth' });
+      // Navigate to home page first if on different page, then scroll to features
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollToFeatures: true } });
+      } else {
+        const featuresSection = document.getElementById('features');
+        if (featuresSection) {
+          featuresSection.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else if (value === "preturi") {
-      // Scroll to pricing section
-      const pricingSection = document.getElementById('pricing');
-      if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      // Navigate to home page first if on different page, then scroll to pricing
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollToPricing: true } });
+      } else {
+        const pricingSection = document.getElementById('pricing');
+        if (pricingSection) {
+          pricingSection.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else if (value === "contacte") {
       navigate("/contacts");

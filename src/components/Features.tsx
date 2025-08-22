@@ -64,7 +64,7 @@ const Features = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&_.feature-card_img]:transition-all [&_.feature-card_img]:duration-300 [&_.feature-card:hover_img]:scale-105 [&_.feature-card:hover_img]:shadow-xl">
           {/* Feature 1 */}
           <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
