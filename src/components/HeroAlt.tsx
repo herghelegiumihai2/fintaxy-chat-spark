@@ -79,31 +79,26 @@ const HeroAlt = ({
       }
     }
   };
-  return (
-    <section ref={heroRef} className="pt-20 pb-16 px-6 bg-gray-50/50 relative overflow-hidden">
+  return <section ref={heroRef} className="pt-20 pb-16 px-6 bg-gray-50/50 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/20 blur-[80px]"></div>
       <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]"></div>
       
       <div className="container mx-auto max-w-screen-xl">
         {/* Full Width Card */}
-        <div
-          className="
+        <div className="
             bg-white rounded-2xl
             w-full mx-auto
             max-w-[92vw] 2xl:max-w-[1800px]
             px-6 md:px-10 lg:px-14 xl:px-20
             py-10 lg:py-14
             shadow-lg shadow-gray-900/5 border border-gray-100
-          "
-        >
-          <div
-            className="
+          ">
+          <div className="
               grid items-center
               grid-cols-1 lg:grid-cols-[1.25fr_0.75fr]
               gap-8 md:gap-10 lg:gap-12 xl:gap-16
-            "
-          >
+            ">
             {/* Left Side - Content */}
               <div className="
                 pr-0 lg:pr-8 xl:pr-12
@@ -117,9 +112,8 @@ const HeroAlt = ({
               </div>
               
               {/* Main Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Contabilitate și AI pentru companiile Române.
-              </h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">Contabilitate + AI
+Pentru Companiile Române.</h1>
               
               {/* Subtitle */}
               <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
@@ -129,30 +123,19 @@ const HeroAlt = ({
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex flex-col items-start">
-                  <Button 
-                    className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" 
-                    size="lg"
-                    onClick={() => {
-                      const event = new CustomEvent('openApplicationModal');
-                      window.dispatchEvent(event);
-                    }}
-                  >
+                  <Button className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" size="lg" onClick={() => {
+                  const event = new CustomEvent('openApplicationModal');
+                  window.dispatchEvent(event);
+                }}>
                     Începe Gratuit
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                   
                   {/* Subtitle under button */}
-                  <p className="text-gray-500 text-sm mt-3 ml-0">
-                    Începe complet gratuit. Fără card bancar.
-                  </p>
+                  
                 </div>
                 
-                <Button 
-                  className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" 
-                  variant="outline" 
-                  size="lg"
-                  onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}
-                >
+                <Button className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" variant="outline" size="lg" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
                   Programează Consultare
                 </Button>
               </div>
@@ -161,21 +144,16 @@ const HeroAlt = ({
             {/* Right Side - Image */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <img 
-                  src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png" 
-                  alt="Business professional managing documents and invoices - Fintaxy automation" 
-                  className="
+                <img src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png" alt="Business professional managing documents and invoices - Fintaxy automation" className="
                     w-full h-auto object-contain
                     max-w-[540px] md:max-w-[600px] lg:max-w-[680px] xl:max-w-[740px]
                     justify-self-center lg:justify-self-end
-                  "
-                />
+                  " />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default HeroAlt;
