@@ -20,13 +20,31 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-6">Link-uri rapide</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#features" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
+                <a 
+                  href="#features" 
+                  className="text-blue-200/80 hover:text-white flex items-center transition-colors"
+                  onClick={(e) => {
+                    if (window.location.pathname !== '/') {
+                      e.preventDefault();
+                      window.location.href = '/#features';
+                    }
+                  }}
+                >
                   <ChevronRight className="w-3 h-3 mr-1" />
                   Funționalități
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-blue-200/80 hover:text-white flex items-center transition-colors">
+                <a 
+                  href="#pricing" 
+                  className="text-blue-200/80 hover:text-white flex items-center transition-colors"
+                  onClick={(e) => {
+                    if (window.location.pathname !== '/') {
+                      e.preventDefault();
+                      window.location.href = '/#pricing';
+                    }
+                  }}
+                >
                   <ChevronRight className="w-3 h-3 mr-1" />
                   Prețuri
                 </a>
