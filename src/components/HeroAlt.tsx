@@ -86,59 +86,62 @@ const HeroAlt = ({
       <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]"></div>
       
       <div className="container mx-auto max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
-          {/* Left Side - Content Card */}
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg shadow-gray-900/5 border border-gray-100">
-            {/* Badge/Chip */}
-            <div className="inline-block mb-6">
-              <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
-                Contabil, Aplicație + AI
-              </span>
-            </div>
-            
-            {/* Main Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Contabilitate și AI pentru companiile Române.
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
-              Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.
-            </p>
-            
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" 
-                size="lg"
-                onClick={() => {
-                  const event = new CustomEvent('openApplicationModal');
-                  window.dispatchEvent(event);
-                }}
-              >
-                Începe Gratuit
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+        {/* Full Width Card */}
+        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg shadow-gray-900/5 border border-gray-100">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Content */}
+            <div>
+              {/* Badge/Chip */}
+              <div className="inline-block mb-6">
+                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
+                  Contabil, Aplicație + AI
+                </span>
+              </div>
               
-              <Button 
-                className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" 
-                variant="outline" 
-                size="lg"
-                onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}
-              >
-                Programează Consultare
-              </Button>
+              {/* Main Title */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Contabilitate și AI pentru companiile Române.
+              </h1>
+              
+              {/* Subtitle */}
+              <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
+                Automatizează cele mai plictisitoare sarcini — care chiar și contabilii le urăsc.
+              </p>
+              
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" 
+                  size="lg"
+                  onClick={() => {
+                    const event = new CustomEvent('openApplicationModal');
+                    window.dispatchEvent(event);
+                  }}
+                >
+                  Începe Gratuit
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                
+                <Button 
+                  className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}
+                >
+                  Programează Consultare
+                </Button>
+              </div>
             </div>
-          </div>
-          
-          {/* Right Side - Image */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/3810cc9e-9286-40a1-8a9b-f2c21b2428df.png" 
-                alt="Business professional with documents - Fintaxy automation" 
-                className="w-full max-w-md h-auto object-contain"
-              />
+            
+            {/* Right Side - Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png" 
+                  alt="Business professional managing documents and invoices - Fintaxy automation" 
+                  className="w-full max-w-md h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
