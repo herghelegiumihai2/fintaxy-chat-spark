@@ -13,9 +13,9 @@ const FinalCTA = () => {
           
           {/* Content */}
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-              Nu te-ai născut pentru facturi.<br />
-              De-aia există Fintaxy !
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+              <div className="mb-4">Nu te-ai născut pentru facturi.</div>
+              <div className="mb-8">De-aia există Fintaxy !</div>
             </h2>
             
             <div className="mb-8">

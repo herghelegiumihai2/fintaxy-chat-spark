@@ -79,7 +79,7 @@ const HeroAlt = ({
       }
     }
   };
-  return <section ref={heroRef} className="pt-20 pb-16 px-6 bg-gray-50/50 relative overflow-hidden">
+  return <section ref={heroRef} className="pt-32 pb-16 px-6 bg-gray-50/50 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/20 blur-[80px]"></div>
       <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]"></div>

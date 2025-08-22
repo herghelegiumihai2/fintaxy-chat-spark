@@ -1,8 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FileText, RefreshCcw, BarChart3, BrainCircuit, Lock, Zap, CheckCircle } from 'lucide-react';
+import ImageLightbox from './ImageLightbox';
 const Features = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement[]>([]);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Sample images for the lightbox (you can replace with actual feature images)
+  const featureImages = [
+    "/lovable-uploads/0b4108ad-feef-4247-873f-d56c7d5af58c.png",
+    "/lovable-uploads/0df6a437-5b17-4dea-bf1f-fc4579e1829c.png",
+    "/lovable-uploads/1ab509ee-7b4f-4bb9-bc45-1ac04db199f3.png",
+    "/lovable-uploads/27fa7aeb-049d-4477-94ec-a2f7ad151c1f.png",
+    "/lovable-uploads/2952eed9-2e84-4976-8af4-1594d1b05c51.png",
+    "/lovable-uploads/34995e56-1ea7-4264-984a-603579d62533.png"
+  ];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   // Add items to the refs array
   const addToRefs = (el: HTMLDivElement) => {
@@ -64,17 +82,28 @@ const Features = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&_.feature-card_img]:transition-all [&_.feature-card_img]:duration-300 [&_.feature-card:hover_img]:scale-105 [&_.feature-card:hover_img]:shadow-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <FileText className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Procesare documente</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Extrage automat informații relevante din facturi, chitanțe și alte documente financiare cu precizie ridicată.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(0)}
+              aria-label="Preview imagine procesare documente"
+            >
+              <img 
+                src={featureImages[0]} 
+                alt="Procesare documente" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Recunoaștere cu precizie de 98%</span>
@@ -87,15 +116,26 @@ const Features = () => {
           </div>
           
           {/* Feature 2 */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <RefreshCcw className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Reconciliere automată</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Realizează automat potrivirea tranzacțiilor și reconcilierea banilor între diverse conturi și sisteme.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(1)}
+              aria-label="Preview imagine reconciliere automată"
+            >
+              <img 
+                src={featureImages[1]} 
+                alt="Reconciliere automată" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Reducere a timpului cu 80%</span>
@@ -108,15 +148,26 @@ const Features = () => {
           </div>
           
           {/* Feature 3 */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <BarChart3 className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Rapoarte analitice</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Generează rapoarte personalizate și analize financiare bazate pe datele disponibile în sistem.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(2)}
+              aria-label="Preview imagine rapoarte analitice"
+            >
+              <img 
+                src={featureImages[2]} 
+                alt="Rapoarte analitice" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Șabloane personalizabile</span>
@@ -129,15 +180,26 @@ const Features = () => {
           </div>
           
           {/* Feature 4 - UPDATED DESCRIPTION */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <BrainCircuit className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Asistent AI Voice-Driven</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Comunici prin voce, primești răspunsuri instant.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(3)}
+              aria-label="Preview imagine asistent AI"
+            >
+              <img 
+                src={featureImages[3]} 
+                alt="Asistent AI Voice-Driven" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Înțelegere contextuală avansată</span>
@@ -150,15 +212,26 @@ const Features = () => {
           </div>
           
           {/* Feature 5 - UPDATED DESCRIPTION */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Lock className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Expert Contabil</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Contabil certificat CECCAR, specializat în domeniul tău. Disponibil oricând.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(4)}
+              aria-label="Preview imagine expert contabil"
+            >
+              <img 
+                src={featureImages[4]} 
+                alt="Expert Contabil" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Conformitate GDPR completă</span>
@@ -171,15 +244,26 @@ const Features = () => {
           </div>
           
           {/* Feature 6 - UPDATED DESCRIPTION */}
-          <div className="feature-card glass-card p-8 rounded-2xl stagger-item" ref={addToRefs}>
+          <div className="feature-card glass-card p-8 rounded-2xl stagger-item group relative overflow-hidden" ref={addToRefs}>
             <div className="w-12 h-12 mb-6 rounded-xl bg-blue-100 flex items-center justify-center">
               <Zap className="text-fintaxy-blue w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-fintaxy-navy mb-3">Informații în Timp Real</h3>
-            <p className="text-fintaxy-muted">
+            <p className="text-fintaxy-muted mb-4">
               Accesează situația financiară și indicatorii cheie in afacere - oricând.
             </p>
-            <ul className="mt-4 space-y-2">
+            <div 
+              className="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer mb-4 group/image"
+              onClick={() => openLightbox(5)}
+              aria-label="Preview imagine informații în timp real"
+            >
+              <img 
+                src={featureImages[5]} 
+                alt="Informații în Timp Real" 
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/image:scale-105"
+              />
+            </div>
+            <ul className="space-y-2">
               <li className="flex items-center text-sm text-fintaxy-muted">
                 <CheckCircle className="text-fintaxy-blue w-4 h-4 mr-2 flex-shrink-0" />
                 <span>Integrare fără efort</span>
@@ -192,6 +276,14 @@ const Features = () => {
           </div>
         </div>
       </div>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={featureImages}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </section>;
 };
 export default Features;

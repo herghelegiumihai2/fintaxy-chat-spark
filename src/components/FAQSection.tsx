@@ -106,7 +106,8 @@ const FAQSection = () => {
 
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-blue-50 to-white" ref={sectionRef}>
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-screen-xl">
+        <div className="w-full mx-auto max-w-[92vw] 2xl:max-w-[1800px]">
         <div className="text-center mb-16 section-appear">
           <h2 className="text-3xl md:text-4xl font-semibold text-fintaxy-navy mb-6">
             Întrebări frecvente
@@ -142,6 +143,7 @@ const FAQSection = () => {
               </Button>
             </div>
           )}
+        </div>
         </div>
       </div>
     </section>
