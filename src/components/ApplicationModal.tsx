@@ -80,11 +80,11 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
   };
   return <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto py-[20px]">
-        <DialogHeader className="py-0">
+        <DialogHeader className="py-[15px]">
           <DialogTitle className="text-2xl font-semibold text-fintaxy-navy text-center mb-2">
             Adaugă-mă pe lista de așteptare
           </DialogTitle>
-          <p className="text-fintaxy-muted text-center my-[10px] py-0">
+          <p className="text-fintaxy-muted text-center py-0 my-0">
             Fii printre primii care vor avea acces la platforma Fintaxy
           </p>
         </DialogHeader>
