@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 const FinalCTA = () => {
   return (
     <section id="contact-section" className="py-20 px-6">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-screen-xl">
+        <div className="w-full mx-auto max-w-[92vw] 2xl:max-w-[1800px]">
         <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
           {/* Background overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-pink-500/90 via-purple-500/90 to-blue-500/90 rounded-3xl"></div>
@@ -51,6 +52,7 @@ const FinalCTA = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

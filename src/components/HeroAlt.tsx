@@ -128,17 +128,24 @@ const HeroAlt = ({
               
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" 
-                  size="lg"
-                  onClick={() => {
-                    const event = new CustomEvent('openApplicationModal');
-                    window.dispatchEvent(event);
-                  }}
-                >
-                  Începe Gratuit
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                <div className="flex flex-col items-start">
+                  <Button 
+                    className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" 
+                    size="lg"
+                    onClick={() => {
+                      const event = new CustomEvent('openApplicationModal');
+                      window.dispatchEvent(event);
+                    }}
+                  >
+                    Începe Gratuit
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  
+                  {/* Subtitle under button */}
+                  <p className="text-gray-500 text-sm mt-3 ml-0">
+                    Începe complet gratuit. Fără card bancar.
+                  </p>
+                </div>
                 
                 <Button 
                   className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300" 

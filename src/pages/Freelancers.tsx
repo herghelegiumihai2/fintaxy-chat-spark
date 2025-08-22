@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeroAlt from '../components/HeroAlt';
+import SimpleFeatures from '../components/SimpleFeatures';
 import ModuleSection from '../components/ModuleSection';
 import SecuritySection from '../components/SecuritySection';
 import Testimonials from '../components/Testimonials';
@@ -77,6 +78,7 @@ const Freelancers = () => {
   return <div className="min-h-screen bg-white">
       <Navbar />
       <HeroAlt userType="freelancer" />
+      <SimpleFeatures />
       
       <ModuleSection />
       <SecuritySection />
