@@ -161,7 +161,7 @@
 }
 
 /* Image hover effects with rounded corners */
-.group/image:hover {
+.group:hover .image-hover {
   box-shadow: 0 10px 25px rgba(0, 13, 53, 0.15);
 }
 
