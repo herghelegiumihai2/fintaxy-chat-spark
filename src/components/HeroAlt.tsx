@@ -84,7 +84,7 @@ const HeroAlt = ({
       <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/20 blur-[80px]"></div>
       <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]"></div>
       
-      <div className="container mx-auto max-w-screen-xl">
+      <div className="mx-auto " style="max-width: 1336px">
         {/* Full Width Card */}
         <div className="
             bg-white rounded-2xl
