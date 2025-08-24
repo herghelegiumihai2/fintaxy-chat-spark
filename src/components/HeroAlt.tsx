@@ -137,9 +137,7 @@ const HeroAlt = ({
             </div>
 
             {/* Subtitle under buttons */}
-            <p className="text-sm text-gray-500 text-left mb-4 py-0">
-              Începe complet gratuit. Fără card bancar.
-            </p>
+            
             
             {/* Google Rating */}
             <GoogleRating />
