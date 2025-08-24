@@ -118,20 +118,20 @@ const FAQSection = () => {
         </div>
         
         <div className="bg-white rounded-2xl shadow-md p-6 md:p-10 section-appear">
-          <Accordion type="single" collapsible className="space-y-4">
-            {visibleItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-100 rounded-lg overflow-hidden">
-                <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 text-fintaxy-navy font-medium text-left">
-                  <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {visibleItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border border-gray-100 rounded-lg overflow-hidden">
+                  <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 text-fintaxy-navy font-medium text-left data-[state=open]:bg-gray-100">
                     {item.question}
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-fintaxy-muted">
-                  <div className="pt-2">{item.answer}</div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-fintaxy-muted bg-gray-50">
+                    <div className="pt-2">{item.answer}</div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
           
           {!showAll && (
             <div className="flex justify-center mt-8">
