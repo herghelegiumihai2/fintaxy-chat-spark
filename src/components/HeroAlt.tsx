@@ -109,9 +109,8 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
               pr-0 lg:pr-8 xl:pr-12
             "
           >
-            {/* Google Rating and Badge */}
+            {/* Badge */}
             <div className="flex flex-col gap-4 mb-8">
-              <GoogleRating />
               <div className="inline-block">
                 <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
                   Contabil, Aplicație + AI
@@ -170,9 +169,12 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
             </div>
 
             {/* Subtitle under buttons */}
-            <p className="text-sm text-gray-500 text-left">
+            <p className="text-sm text-gray-500 text-left mb-4">
               Începe complet gratuit. Fără card bancar.
             </p>
+            
+            {/* Google Rating */}
+            <GoogleRating />
           </div>
 
           {/* Right Side - Image */}
