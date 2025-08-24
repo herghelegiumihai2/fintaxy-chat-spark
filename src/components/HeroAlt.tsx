@@ -115,7 +115,7 @@ const HeroAlt = ({
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                 <span className="text-blue-600">Contabilitate + AI</span>
                 <br />
-                <span className="text-gray-900">Pentru companiile </br> Române.</span>
+                <span className="text-gray-900">Pentru companiile <br> Române.</span>
               </h1>
               
               {/* Subtitle */}
