@@ -186,5 +186,6 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
     </div>
   </section>
 );
+};
 
 export default HeroAlt;
