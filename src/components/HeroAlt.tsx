@@ -9,41 +9,40 @@ import GoogleRating from './GoogleRating';
 interface HeroAltProps {
   userType: 'business' | 'freelancer' | 'accounting';
 }
-
-const HeroAlt = ({ userType }: HeroAltProps) => {
+const HeroAlt = ({
+  userType
+}: HeroAltProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
-
   const scrollToContactSection = () => {
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
   const scrollToPricingSection = () => {
     const pricingSection = document.getElementById('pricing');
     if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' });
+      pricingSection.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
     if (heroRef.current) observer.observe(heroRef.current);
-
     const interval = setInterval(() => {
       setActiveSlide(prev => (prev + 1) % 3);
       if (carouselRef.current) {
@@ -51,64 +50,51 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
         if (items.length > 0) {
           const nextIndex = (activeSlide + 1) % items.length;
           if (carouselRef.current.parentElement) {
-            const scrollAmount =
-              nextIndex * (carouselRef.current.parentElement.offsetWidth || 0);
+            const scrollAmount = nextIndex * (carouselRef.current.parentElement.offsetWidth || 0);
             carouselRef.current.parentElement.scrollLeft = scrollAmount;
           }
         }
       }
     }, 5000);
-
     return () => {
       if (heroRef.current) observer.unobserve(heroRef.current);
       clearInterval(interval);
     };
   }, [activeSlide]);
-
   const handleDotClick = (index: number) => {
     setActiveSlide(index);
     if (carouselRef.current) {
       const items = carouselRef.current.querySelectorAll('.carousel-item');
       if (items.length > 0 && items[index] && carouselRef.current.parentElement) {
-        const scrollAmount =
-          index * (carouselRef.current.parentElement.offsetWidth || 0);
+        const scrollAmount = index * (carouselRef.current.parentElement.offsetWidth || 0);
         carouselRef.current.parentElement.scrollLeft = scrollAmount;
       }
     }
   };
-
-  return (
-  <section
-    ref={heroRef}
-    className="pt-32 pb-16 px-6 bg-gray-50/50 relative overflow-hidden"
-  >
+  return <section ref={heroRef} className="pt-32 pb-16 px-6 bg-gray-50/50 relative overflow-hidden">
     {/* Decorative elements */}
     <div className="absolute top-40 -left-28 w-56 h-56 rounded-full bg-blue-100/20 blur-[80px]" />
     <div className="absolute bottom-0 -right-28 w-72 h-72 rounded-full bg-blue-100/30 blur-[100px]" />
 
-    <div className="mx-auto" style={{ maxWidth: '1336px' }}>
+    <div className="mx-auto" style={{
+      maxWidth: '1336px'
+    }}>
       {/* Full Width Card */}
-      <div
-        className="
+      <div className="
           bg-white rounded-2xl
           w-full mx-auto
           max-w-[92vw] 2xl:max-w-[1800px]
           px-6 md:px-10 lg:px-14 xl:px-20
           shadow-lg shadow-gray-900/5 border border-gray-100
-        "
-      >
-        <div
-          className="
+        ">
+        <div className="
             grid items-center
             grid-cols-1 lg:grid-cols-[1.3fr_1.2fr]
-          "
-        >
+          ">
           {/* Left Side - Content */}
-          <div
-            className="
+          <div className="
               pr-0 lg:pr-8 xl:pr-12
-            "
-          >
+            ">
             {/* Badge */}
             <div className="flex flex-col gap-4 mb-8">
               <div className="inline-block">
@@ -134,42 +120,24 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <Button
-                className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300"
-                size="lg"
-                onClick={() => {
-                  const event = new CustomEvent('openApplicationModal');
-                  window.dispatchEvent(event);
-                }}
-              >
+              <Button className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg shadow-blue-600/25 transition-all duration-300" size="lg" onClick={() => {
+                const event = new CustomEvent('openApplicationModal');
+                window.dispatchEvent(event);
+              }}>
                 Începe Gratuit
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
 
-              <Button
-                className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300 flex items-center gap-3"
-                variant="outline"
-                size="lg"
-                onClick={() =>
-                  window.open(
-                    'https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true',
-                    '_blank'
-                  )
-                }
-              >
+              <Button className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300 flex items-center gap-3" variant="outline" size="lg" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                  <img 
-                    src="/lovable-uploads/3bdb3768-efd0-4682-814d-2aee46b9150a.png" 
-                    alt="Andrei Coiciu profile"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/lovable-uploads/3bdb3768-efd0-4682-814d-2aee46b9150a.png" alt="Andrei Coiciu profile" className="w-full h-full object-cover" />
                 </div>
                 Programează Consultare
               </Button>
             </div>
 
             {/* Subtitle under buttons */}
-            <p className="text-sm text-gray-500 text-left mb-4">
+            <p className="text-sm text-gray-500 text-left mb-4 py-0">
               Începe complet gratuit. Fără card bancar.
             </p>
             
@@ -180,22 +148,16 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
           {/* Right Side - Image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <img
-                src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png"
-                alt="Business professional managing documents and invoices - Fintaxy automation"
-                className="
+              <img src="/lovable-uploads/60480464-c99f-447d-9a3e-e9805221a651.png" alt="Business professional managing documents and invoices - Fintaxy automation" className="
                   w-full h-auto object-contain
                   max-w-[540px] md:max-w-[600px] lg:max-w-[680px] xl:max-w-[740px]
                   justify-self-center lg:justify-self-end p-6
-                "
-              />
+                " />
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-);
+  </section>;
 };
-
 export default HeroAlt;
