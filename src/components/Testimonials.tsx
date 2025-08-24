@@ -85,7 +85,7 @@ const Testimonials = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => <div key={testimonial.id} className="feature-card bg-white rounded-2xl shadow-sm border border-slate-100 p-8 stagger-item" ref={addToRefs} style={{
+          {testimonials.map((testimonial, index) => <div key={testimonial.id} className="feature-card bg-white rounded-2xl shadow-sm border border-slate-100 p-8 stagger-item flex flex-col" ref={addToRefs} style={{
           transitionDelay: `${0.1 * index}s`
         }}>
               <div className="flex mb-4">
@@ -94,11 +94,11 @@ const Testimonials = () => {
             }).map((_, i) => <Star key={i} className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />)}
               </div>
               
-              <blockquote className="text-fintaxy-navy text-lg mb-6 leading-relaxed">
+              <blockquote className="text-fintaxy-navy text-lg mb-6 leading-relaxed flex-grow">
                 "{testimonial.quote}"
               </blockquote>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 mt-auto">
                 <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
                   <img 
                     src={testimonial.avatar} 

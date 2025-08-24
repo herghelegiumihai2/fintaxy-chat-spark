@@ -160,7 +160,7 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
               >
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
                   <img 
-                    src="/lovable-uploads/653b9ad0-a0b0-4d3b-a96c-1258640a60bd.png" 
+                    src="/lovable-uploads/3bdb3768-efd0-4682-814d-2aee46b9150a.png" 
                     alt="Andrei Coiciu profile"
                     className="w-full h-full object-cover"
                   />
