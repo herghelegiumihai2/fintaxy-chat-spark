@@ -37,7 +37,7 @@ const SimpleFeatures = () => {
       });
     };
   }, []);
-  return <section ref={sectionRef} className="px-6 bg-gray-50/30 py-0">
+  return <section ref={sectionRef} className="px-6 bg-gray-50/30 py-[40px]">
       <div className="container mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Card 1 */}
