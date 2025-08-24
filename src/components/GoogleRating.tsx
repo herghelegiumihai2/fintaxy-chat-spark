@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star, MapPin } from 'lucide-react';
 const GoogleRating = () => {
-  return <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 shadow-lg border border-gray-100 py-[8px] my-[10px]">
+  return <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 shadow-lg border border-gray-100 py-[8px] my-[30px]">
       <MapPin className="w-5 h-5 text-blue-600" />
       <div className="flex items-center gap-2">
         <span className="font-semibold text-gray-900">5.0</span>
