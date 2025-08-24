@@ -100,8 +100,7 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
         <div
           className="
             grid items-center
-            grid-cols-1 lg:grid-cols-[1fr_1.5fr]
-            gap-8 md:gap-10 lg:gap-12 xl:gap-16
+            grid-cols-1 lg:grid-cols-[1.3fr_1.2fr]
           "
         >
           {/* Left Side - Content */}
