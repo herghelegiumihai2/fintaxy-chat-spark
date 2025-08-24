@@ -100,14 +100,13 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
         <div
           className="
             grid items-center
-            grid-cols-1 lg:grid-cols-[1.3fr_1.2fr]
+            grid-cols-1 lg:grid-cols-[1.2fr_1.3fr]
           "
         >
           {/* Left Side - Content */}
           <div
             className="
               pr-0 lg:pr-8 xl:pr-12
-              max-w-sm
             "
           >
             {/* Badge/Chip */}
