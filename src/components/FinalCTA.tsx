@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
   return (
-    <section id="contact-section" className="py-20 px-6">
+    <section id="contact-section" className="py-20 px-6 mb-16">
       <div className="container mx-auto max-w-screen-xl">
         <div className="w-full mx-auto max-w-[92vw] 2xl:max-w-[1800px]">
         <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">

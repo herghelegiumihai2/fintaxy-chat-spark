@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeroAlt from '../components/HeroAlt';
-import GoogleMapsSection from '../components/GoogleMapsSection';
+
 import SimpleFeatures from '../components/SimpleFeatures';
 import ModuleSection from '../components/ModuleSection';
 import SecuritySection from '../components/SecuritySection';
@@ -82,7 +82,6 @@ const Business = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <HeroAlt userType="business" />
-      <GoogleMapsSection />
       <SimpleFeatures />
       
       <ModuleSection />

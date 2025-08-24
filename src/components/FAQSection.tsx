@@ -122,7 +122,9 @@ const FAQSection = () => {
             {visibleItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border border-gray-100 rounded-lg overflow-hidden">
                 <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 text-fintaxy-navy font-medium text-left">
-                  {item.question}
+                  <div className="max-w-4xl mx-auto">
+                    {item.question}
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 text-fintaxy-muted">
                   <div className="pt-2">{item.answer}</div>

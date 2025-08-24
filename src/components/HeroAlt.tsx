@@ -130,7 +130,7 @@ const HeroAlt = ({
 
               <Button className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300 flex items-center gap-3" variant="outline" size="lg" onClick={() => window.open('https://cal.com/andrei-coiciu-lokief/30min?overlayCalendar=true', '_blank')}>
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                  <img src="/lovable-uploads/c381dc4c-d0f8-427d-afe1-3ad9308d6ca8.png" alt="Andrei Coiciu profile" className="w-full h-full object-cover" />
+                  <img src="/lovable-uploads/76bafb55-3d4a-4934-b192-2da82fd83f5f.png" alt="Andrei Coiciu profile" className="w-full h-full object-cover" />
                 </div>
                 Programează Consultare
               </Button>
@@ -145,10 +145,10 @@ const HeroAlt = ({
             <GoogleRating />
             
             {/* Certification Logos */}
-            <div className="flex items-center gap-4 mt-6">
-              <img src="/lovable-uploads/09957a93-1cc0-4c78-bd68-d2d524bef381.png" alt="eFactura certification" className="h-12 w-auto opacity-70" />
-              <img src="/lovable-uploads/01a74055-c2a7-46bb-8de3-149bb1bb12c6.png" alt="SAF-T certification" className="h-12 w-auto opacity-70" />
-              <img src="/lovable-uploads/7db434bc-b00e-41c7-89b1-05fa4f0f6f00.png" alt="CECCAR certification" className="h-12 w-auto opacity-70" />
+            <div className="flex items-center justify-center gap-6 mt-6">
+              <img src="/lovable-uploads/09957a93-1cc0-4c78-bd68-d2d524bef381.png" alt="eFactura certification" className="h-16 w-auto opacity-70" />
+              <img src="/lovable-uploads/01a74055-c2a7-46bb-8de3-149bb1bb12c6.png" alt="SAF-T certification" className="h-16 w-auto opacity-70" />
+              <img src="/lovable-uploads/7db434bc-b00e-41c7-89b1-05fa4f0f6f00.png" alt="CECCAR certification" className="h-16 w-auto opacity-70" />
             </div>
           </div>
 
