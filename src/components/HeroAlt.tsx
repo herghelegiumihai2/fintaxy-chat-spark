@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import GoogleRating from './GoogleRating';
 // import { BrainCircuit, FileSearch, BarChart3 } from "lucide-react"; // not used
 // import FeatureCard from './FeatureCard'; // not used
 // import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"; // not used
@@ -108,11 +109,14 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
               pr-0 lg:pr-8 xl:pr-12
             "
           >
-            {/* Badge/Chip */}
-            <div className="inline-block mb-8">
-              <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
-                Contabil, Aplicație + AI
-              </span>
+            {/* Google Rating and Badge */}
+            <div className="flex flex-col gap-4 mb-8">
+              <GoogleRating />
+              <div className="inline-block">
+                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200">
+                  Contabil, Aplicație + AI
+                </span>
+              </div>
             </div>
 
             {/* Main Title */}
@@ -144,7 +148,7 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
               </Button>
 
               <Button
-                className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300"
+                className="px-8 py-6 bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 font-semibold rounded-lg transition-all duration-300 flex items-center gap-3"
                 variant="outline"
                 size="lg"
                 onClick={() =>
@@ -154,6 +158,13 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
                   )
                 }
               >
+                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/653b9ad0-a0b0-4d3b-a96c-1258640a60bd.png" 
+                    alt="Andrei Coiciu profile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 Programează Consultare
               </Button>
             </div>

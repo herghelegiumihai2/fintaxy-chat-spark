@@ -5,19 +5,22 @@ const testimonials = [{
   quote: "Primesc facturi intracomunitare în toate formatele posibile. Contabilul îmi cerea bani în plus pentru procesarea lor manuală. Cu Fintaxy nu mai depind de nimeni. AI-ul citește automat orice format – PDF, email, etc. – și extrage corect datele. Totul ajunge direct în contabilitate, fără bătăi de cap.",
   name: "Radu-Corneliu Marin",
   role: "Co-founder, Timeworx.io",
-  rating: 5
+  rating: 5,
+  avatar: "/lovable-uploads/b3067dab-c6ef-4c27-b638-27e565220c30.png"
 }, {
   id: 2,
   quote: "Emiterea facturilor în e-Factura și reconcilierea cu încasările era o bătaie de cap. Avem multe vânzări și manual nu mai funcționa. Cu Fintaxy, totul e automat: factura se generează, se semnează digital și se trimite direct în SPV. Primesc încasările și pot trimite reminders printr-un prompt dacă ceva întârzie. Economisim timp și nervi. Zero erori.",
   name: "Daniel Trohin",
   role: "Co-Founder & CEO, Renter",
-  rating: 5
+  rating: 5,
+  avatar: "/lovable-uploads/f84f09aa-e7e4-474b-9327-39458650fdf6.png"
 }, {
   id: 3,
   quote: "Fintaxy m-a scăpat de haosul conturilor și platformelor multiple. Am centralizat toate încasările din Shopify, Stripe, PayPal și conturi bancare într-un singur loc. Economisesc peste o oră pe săptămână doar din logatul și extragerea datelor. Acum am control complet și vizibilitate în timp real asupra banilor.",
   name: "Valeriu Guțan",
   role: "Fondator, BananaShop",
-  rating: 5
+  rating: 5,
+  avatar: "/lovable-uploads/d35a8033-c469-43ea-b852-0aa574cf5f29.png"
 }];
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -95,9 +98,18 @@ const Testimonials = () => {
                 "{testimonial.quote}"
               </blockquote>
               
-              <div>
-                <h4 className="font-semibold text-fintaxy-navy">{testimonial.name}</h4>
-                <p className="text-sm text-fintaxy-muted">{testimonial.role}</p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={`${testimonial.name} profile`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-fintaxy-navy">{testimonial.name}</h4>
+                  <p className="text-sm text-fintaxy-muted">{testimonial.role}</p>
+                </div>
               </div>
             </div>)}
         </div>
