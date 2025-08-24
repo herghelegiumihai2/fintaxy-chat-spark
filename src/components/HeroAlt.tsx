@@ -93,14 +93,13 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
           w-full mx-auto
           max-w-[92vw] 2xl:max-w-[1800px]
           px-6 md:px-10 lg:px-14 xl:px-20
-          py-10 lg:py-14
           shadow-lg shadow-gray-900/5 border border-gray-100
         "
       >
         <div
           className="
             grid items-center
-            grid-cols-1 lg:grid-cols-[1.2fr_1.3fr]
+            grid-cols-1 lg:grid-cols-[1.3fr_1.2fr]
           "
         >
           {/* Left Side - Content */}
@@ -174,7 +173,7 @@ const HeroAlt = ({ userType }: HeroAltProps) => {
                 className="
                   w-full h-auto object-contain
                   max-w-[540px] md:max-w-[600px] lg:max-w-[680px] xl:max-w-[740px]
-                  justify-self-center lg:justify-self-end
+                  justify-self-center lg:justify-self-end p-6
                 "
               />
             </div>
