@@ -4,7 +4,7 @@ const GoogleRating = () => {
   return (
     <div 
       className="inline-flex items-center gap-3 bg-white rounded-full px-4 shadow-lg border border-gray-100 py-[8px] my-[30px] cursor-pointer hover:shadow-xl transition-shadow duration-300"
-      onClick={() => window.open('https://maps.google.com/maps?ll=44.439663,26.096306&z=16&t=m&hl=en&gl=RO&mapclient=embed&cid=2882831124829921120', '_blank')}
+      onClick={() => window.open('https://maps.app.goo.gl/rL8bsLZwmonqkj7G8', '_blank')}
     >
       <MapPin className="w-5 h-5 text-blue-600" />
       <div className="flex items-center gap-2">
