@@ -1,7 +1,7 @@
 export const runtime = 'edge';
 
 // n8n Webhook endpoint
-const WEBHOOK_URL = 'https://dev.n8n.fintaxy.com/webhook-test/notion-landing-leads';
+const WEBHOOK_URL = 'https://dev.n8n.fintaxy.com/webhook/notion-landing-leads';
 
 export async function POST(request) {
   if (request.method !== 'POST') {
