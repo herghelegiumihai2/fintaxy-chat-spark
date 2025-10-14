@@ -63,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="text-blue-200/80">Email: denis.bradu@fintaxy.com</li>
               <li className="text-blue-200/80">
-                Telefon: +40 750 20 36 48
+                Telefon: +40 750 297 484
               </li>
             </ul>
             

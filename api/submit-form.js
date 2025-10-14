@@ -1,17 +1,7 @@
-// import { Client } from '@notionhq/client';
-
-const notionhq = require('@notionhq/client');
-const { Client } = notionhq;
-
 export const runtime = 'edge';
 
-// Initialize Notion client
-const notion = new Client({
-  auth: process.env.NOTION_API_KEY || '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'
-});
-
-// Database ID
-const DATABASE_ID = '1c2578b095088012ac46f77c182a47cb';
+// n8n Webhook endpoint
+const WEBHOOK_URL = 'https://dev.n8n.fintaxy.com/webhook-test/notion-landing-leads';
 
 export async function POST(request) {
   if (request.method !== 'POST') {
@@ -28,45 +18,31 @@ export async function POST(request) {
 
   try {
     const body = await request.json();
-    const { name, company, email, message } = body;
+    const { name, company, email, phone, message, source } = body;
 
-    const response = await notion.pages.create({
-      parent: { database_id: DATABASE_ID },
-      properties: {
-        Name: {
-          title: [
-            {
-              text: {
-                content: name || ''
-              }
-            }
-          ]
-        },
-        Company: {
-          rich_text: [
-            {
-              text: {
-                content: company || ''
-              }
-            }
-          ]
-        },
-        Email: {
-          email: email || ''
-        },
-        Message: {
-          rich_text: [
-            {
-              text: {
-                content: message || ''
-              }
-            }
-          ]
-        }
-      }
+    // Send data to n8n webhook
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name || '',
+        company: company || '',
+        email: email || '',
+        phone: phone || '',
+        message: message || '',
+        source: source || 'waitlist_modal'
+      })
     });
 
-    return new Response(JSON.stringify({ success: true, data: response }), {
+    if (!response.ok) {
+      throw new Error(`Webhook request failed with status ${response.status}`);
+    }
+
+    const responseData = await response.json();
+
+    return new Response(JSON.stringify({ success: true, data: responseData }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -76,12 +52,12 @@ export async function POST(request) {
       }
     });
   } catch (error) {
-    console.error('Error submitting to Notion:', error);
+    console.error('Error submitting to n8n webhook:', error);
     return new Response(
       JSON.stringify({
         success: false,
         error: error.message,
-        details: error.body ? JSON.stringify(error.body) : 'No additional details'
+        details: 'Failed to submit form data'
       }),
       {
         status: 500,
@@ -105,4 +81,4 @@ export async function OPTIONS(request) {
       'Access-Control-Allow-Headers': 'Content-Type'
     }
   });
-} 
+}
