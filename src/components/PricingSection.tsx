@@ -27,20 +27,20 @@ const PricingSection = () => {
   const srlPlans: PricingPlan[] = [{
     title: "Start",
     price: "50 EUR",
-    features: ["Documente contabile: 30", "Importuri: 0", "2 App Users", "1 Salariat", "AI Assistant"],
+    features: ["Documente contabile: 30", "Importuri: 0", "2 App Users", "1 Employee / Payroll", "AI Assistant"],
     cta: "Incepe Acum",
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
     title: "Standard",
     price: "79 EUR",
-    features: ["Documente contabile: 50", "Importuri: 1", "All AI Accounting features", "5 App Users", "3 Salariati", "1 Accountant Expert"],
+    features: ["Documente contabile: 50", "Importuri: 1", "All AI Accounting features", "5 App Users", "3 Employees / Payroll", "1 Accountant Expert"],
     cta: "Incepe Acum",
     highlighted: true,
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
     title: "Pro",
     price: "150 EUR",
-    features: ["Documente contabile: 120", "Importuri: 5", "All AI Accounting features", "10 App Users", "5 Salariati", "1 Accountant Expert"],
+    features: ["Documente contabile: 120", "Importuri: 5", "All AI Accounting features", "10 App Users", "5 Employees / Payroll", "1 Accountant Expert"],
     cta: "Incepe Acum",
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
