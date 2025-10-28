@@ -27,20 +27,20 @@ const PricingSection = () => {
   const srlPlans: PricingPlan[] = [{
     title: "Start",
     price: "50 EUR",
-    features: ["Documente contabile: 30", "Importuri: 0", "2 Team Members", "1 Salariat", "AI Assistant"],
+    features: ["Documente contabile: 30", "Importuri: 0", "2 App Users", "1 Salariat", "AI Assistant"],
     cta: "Incepe Acum",
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
     title: "Standard",
     price: "79 EUR",
-    features: ["Documente contabile: 50", "Importuri: 1", "All AI Accounting features", "5 Team Members", "3 Salariati", "1 Accountant Expert"],
+    features: ["Documente contabile: 50", "Importuri: 1", "All AI Accounting features", "5 App Users", "3 Salariati", "1 Accountant Expert"],
     cta: "Incepe Acum",
     highlighted: true,
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
     title: "Pro",
     price: "150 EUR",
-    features: ["Documente contabile: 120", "Importuri: 5", "All AI Accounting features", "10 Team Members", "5 Salariati", "1 Accountant Expert"],
+    features: ["Documente contabile: 120", "Importuri: 5", "All AI Accounting features", "10 App Users", "5 Salariati", "1 Accountant Expert"],
     cta: "Incepe Acum",
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
@@ -54,14 +54,14 @@ const PricingSection = () => {
     title: "PFA Basic",
     subtitle: "Normă de Venit",
     price: "10 EUR",
-    features: ["Toate funcțiile AI", "1 Team Member", "1 Accounting Expert", "Comunici prin voce, primești răspunsuri instant", "Facturare automată"],
+    features: ["Toate funcțiile AI", "1 App User", "1 Accounting Expert", "Comunici prin voce, primești răspunsuri instant", "Facturare automată"],
     cta: "Incepe Acum",
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
   }, {
     title: "PFA Plus",
     subtitle: "Real",
     price: "30 EUR",
-    features: ["Toate funcțiile AI", "3 Team Members", "1 Accounting Expert", "Comunici prin voce, primești răspunsuri instant", "Facturare automată", "Rapoarte personalizate", "Consultanță fiscală"],
+    features: ["Toate funcțiile AI", "3 App Users", "1 Accounting Expert", "Comunici prin voce, primești răspunsuri instant", "Facturare automată", "Rapoarte personalizate", "Consultanță fiscală"],
     cta: "Incepe Acum",
     highlighted: true,
     formUrl: "https://airtable.com/appFj5aULmVgrYTpy/pagzTXzlTFmky6BKt/form"
